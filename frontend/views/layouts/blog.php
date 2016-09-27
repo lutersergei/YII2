@@ -3,148 +3,138 @@
 /* @var $this \yii\web\View */
 /* @var $content string */
 
+use frontend\assets\BlogAsset;
+use yii\helpers\Html;
+
+BlogAsset::register($this);
 ?>
+<?php $this->beginPage() ?>
+
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<?= Yii::$app->language ?>">
 <head>
-    <meta charset="utf-8">
+    <meta charset="<?= Yii::$app->charset ?>">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="favicon.ico">
+    <?= Html::csrfMetaTags() ?>
 
     <title>Material Blog</title>
 
-    <!-- Loading animation -->
-    <script src="js/pace.min.js"></script>
+    <?php $this->head() ?>
 
-    <!-- Bootstrap core CSS and Material Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/font-awesome.min.css" rel="stylesheet">
-    <link href="css/bootstrap-material-design.css" rel="stylesheet">
-    <link href="css/ripples.min.css" rel="stylesheet">
-    <link href="css/material-scrolltop.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="css/material-blog.css" rel="stylesheet">
-
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
 </head>
 
 <body>
 
-<div id="landing-header" class="container">
-    <div class="text-center">
-        <i class="material-icons">&#xE871;</i>
-        <h1>Material Blog</h1>
-    </div>
-</div>
+<?php $this->beginBody() ?>
 
-<div id="landing-styles">
-    <div class="container">
+<div class="navbar navbar-material-blog navbar-primary navbar-absolute-top">
 
-        <div class="row">
-            <div class="style col-sm-6 text-center">
-                <h2 class="h3">Travel</h2>
-                <p>One column + Sidebar</p>
-                <div class="macbook">
-                    <div class="inner">
-                        <a href="home-travel.html" class="demo" style="background-image:url('img/landing/travel.png');"></a>
-                    </div>
-                </div>
-            </div><!-- /.style -->
+    <div class="navbar-image" style="background-image: url('img/technology/unsplash-6.jpg');background-position: center 40%;"></div>
 
-            <div class="style col-sm-6 text-center">
-                <h2 class="h3">Technology</h2>
-                <p>Two column + Sidebar</p>
-                <div class="macbook">
-                    <div class="inner">
-                        <a href="home-technology.html" class="demo" style="background-image:url('img/landing/technology.png');"></a>
-                    </div>
-                </div>
-            </div><!-- /.style -->
+    <div class="navbar-wrapper container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html"><i class="material-icons">&#xE871;</i> Material Blog</a>
         </div>
-
-        <div class="row">
-            <div class="style col-sm-6 text-center">
-                <h2 class="h3">Photography</h2>
-                <p>Two column</p>
-                <div class="macbook">
-                    <div class="inner">
-                        <a href="home-photography.html" class="demo" style="background-image:url('img/landing/photography.png');"></a>
-                    </div>
-                </div>
-            </div><!-- /.style -->
-
-            <div class="style col-sm-6 text-center">
-                <h2 class="h3">Fashion</h2>
-                <p>Thee column</p>
-                <div class="macbook">
-                    <div class="inner">
-                        <a href="home-fashion.html" class="demo" style="background-image:url('img/landing/fashion.png');"></a>
-                    </div>
-                </div>
-            </div><!-- /.style -->
-        </div><!-- /.row -->
-
-        <div class="row">
-            <div class="style col-sm-6 text-center">
-                <h2 class="h3">Food</h2>
-                <p>One column + Sidebar</p>
-                <div class="macbook">
-                    <div class="inner">
-                        <a href="home-food.html" class="demo" style="background-image:url('img/landing/food.png');"></a>
-                    </div>
-                </div>
-            </div><!-- /.style -->
-
-            <div class="style col-sm-6 text-center">
-                <h2 class="h3">Music</h2>
-                <p>Two column + Sidebar</p>
-                <div class="macbook">
-                    <div class="inner">
-                        <a href="home-music.html" class="demo" style="background-image:url('img/landing/music.png');"></a>
-                    </div>
-                </div>
-            </div><!-- /.style -->
-        </div><!-- /.row -->
-
-    </div><!-- /.container -->
-
-</div><!-- /#landing-styles -->
-
-<div id="landing-footer" class="container">
-    <div class="text-center">
-
-        <h2>Like our theme?</h2>
-        <a class="btn btn-warning btn-raised btn-lg" href="https://wrapbootstrap.com/user/paullaros" target="_blank">Purchase now</a>
-
+        <div class="navbar-collapse collapse navbar-responsive-collapse">
+            <ul class="nav navbar-nav">
+                <li class="active dropdown">
+                    <a href="bootstrap-elements.html" data-target="#" class="dropdown-toggle" data-toggle="dropdown">Stories <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="home-fashion.html">Fashion</a></li>
+                        <li><a href="home-food.html">Food</a></li>
+                        <li><a href="home-music.html">Music</a></li>
+                        <li><a href="home-photography.html">Photography</a></li>
+                        <li><a href="home-technology.html">Technology</a></li>
+                        <li><a href="home-travel.html">Travel</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="bootstrap-elements.html" data-target="#" class="dropdown-toggle" data-toggle="dropdown">Filters <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="filter-category.html">Category</a></li>
+                        <li><a href="filter-author.html">Author</a></li>
+                        <li><a href="filter-date.html">Date</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="bootstrap-elements.html" data-target="#" class="dropdown-toggle" data-toggle="dropdown">Post <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="post-image.html">Image post</a></li>
+                        <li><a href="post-video.html">Video post</a></li>
+                    </ul>
+                </li>
+                <li><a href="page-about.html">About</a></li>
+                <li><a href="page-contact.html">Contact</a></li>
+                <li class="dropdown hidden-sm">
+                    <a href="bootstrap-elements.html" data-target="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="doc-buttons.html">Buttons</a></li>
+                        <li><a href="doc-forms.html">Forms</a></li>
+                        <li><a href="doc-icons.html">Icons</a></li>
+                        <li><a href="doc-indicators.html">Indicators</a></li>
+                        <li><a href="doc-navbars.html">Navbars</a></li>
+                        <li><a href="doc-panels.html">Panels</a></li>
+                        <li><a href="doc-tables.html">Tables</a></li>
+                        <li><a href="doc-typography.html">Typography</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+            </ul>
+        </div>
     </div>
 </div>
 
-<button class="material-scrolltop" type="button"></button>
+<div class="container blog-content">
 
-<script src="js/jquery-1.11.3.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/ripples.min.js"></script>
-<script src="js/material.min.js"></script>
-<script src="js/material-scrolltop.js"></script>
-<script src="js/main.js"></script>
+    <?= $content ?>
 
-<script>
-    $.material.init();
-    $('body').materialScrollTop();
-</script>
+</div><!-- /.container -->
 
+<footer class="blog-footer">
+
+    <div id="links">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-2">
+                    <i class="material-icons brand">&#xE871;</i>
+                </div>
+
+                <div class="col-sm-8 text-center offset">
+                    <ul class="list-inline">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="page-about.html">About</a></li>
+                        <li><a href="doc-buttons.html">Documentation</a></li>
+                        <li><a href="page-contact.html">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-md-2 text-right offset">
+                    <ul class="list-inline">
+                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</footer>
+
+<button class="material-scrolltop primary" type="button"></button>
+
+<?php $this->endBody() ?>
 </body>
 </html>
+<?php $this->endPage() ?>
