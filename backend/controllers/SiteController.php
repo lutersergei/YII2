@@ -12,6 +12,8 @@ use common\models\LoginForm;
  */
 class SiteController extends Controller
 {
+    public $layout = 'blog.php';
+
     /**
      * @inheritdoc
      */
@@ -29,6 +31,11 @@ class SiteController extends Controller
                         'actions' => ['logout', 'index'],
                         'allow' => true,
                         'roles' => ['@'],
+                    ],
+                    [
+                        'actions' => ['create-tweet'],
+                        'allow' => true,
+                        'roles' => ['?'],
                     ],
                 ],
             ],
@@ -59,6 +66,11 @@ class SiteController extends Controller
      * @return string
      */
     public function actionIndex()
+    {
+        return $this->render('index');
+    }
+
+    public function actionCreateTweet()
     {
         return $this->render('index');
     }
