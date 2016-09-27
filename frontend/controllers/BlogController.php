@@ -40,7 +40,7 @@ class BlogController extends Controller
      */
     public function actionIndex()
     {
-        $title = 'TEST';
+        $title = 'BlogController';
         return $this->render('index', [
             'caption' => $title
         ]);
