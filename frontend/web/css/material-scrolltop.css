@@ -76,7 +76,7 @@
 
 .material-scrolltop,
 .material-scrolltop::before {
-    background-image: url('../icons/top-arrow.svg');
+    background-image: url('../img/top-arrow.svg');
     background-position: center 50%;
     background-repeat: no-repeat;
 }
