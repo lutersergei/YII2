@@ -12,6 +12,7 @@ return [
     'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
     'defaultRoute' => 'blog',
+    'language' => 'ru',
     'components' => [
         'request' => [
             'csrfParam' => '_csrf-frontend',

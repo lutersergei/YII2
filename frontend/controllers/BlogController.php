@@ -5,10 +5,10 @@ use Yii;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
-
+use common\models\Tweets;
 
 /**
- * Site controller
+ * Blog controller
  */
 class BlogController extends Controller
 {
@@ -34,16 +34,32 @@ class BlogController extends Controller
     }
 
     /**
-     * Displays homepage.
+     * Displays all tweets.
      *
      * @return mixed
      */
     public function actionIndex()
     {
-        $title = 'BlogController';
+        $tweets = Tweets::find()->all();
         return $this->render('index', [
-            'caption' => $title
+                'tweets' => $tweets
+            ]);
+    }
+
+    /**
+     * Displays one tweet.
+     *
+     * @return mixed
+     */
+    public function actionView()
+    {
+        $id = Yii::$app->request->get('id');
+
+        $tweet = Tweets::find()->where(['id' => $id])->one();
+        return $this->render('view', [
+            'tweet' => $tweet
         ]);
     }
+
 
 }

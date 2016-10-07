@@ -24,7 +24,7 @@ BlogAsset::register($this);
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <?php $this->head() ?>
 </head>
-<body>
+<body class="theme-whbl">
 <?php $this->beginBody() ?>
 
 <div id="theme-wrapper">
@@ -293,12 +293,26 @@ BlogAsset::register($this);
                                 <li class="nav-header nav-header-first hidden-sm hidden-xs">
                                     Navigation
                                 </li>
-                                <li>
-                                    <a href="index.html">
-                                        <i class="fa fa-dashboard"></i>
-                                        <span>Dashboard</span>
-                                        <span class="label label-primary label-circle pull-right">28</span>
+                                <li class="active">
+                                    <a href="#" class="dropdown-toggle">
+                                        <i class="fa fa-plus-square"></i>
+                                        <span>Add tweet</span>
+                                        <i class="fa fa-angle-right drop-icon"></i>
                                     </a>
+                                    <ul class="submenu">
+                                        <li>
+                                            <a href="/index.php?r=site/new-tweet">
+                                                <i class="fa  fa-comment-o"></i>
+                                                <span>Text</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/index.php?r=site/tweet-timestamp">
+                                                <i class="fa fa-clock-o"></i>
+                                                <span>Timestamp</span>
+                                            </a>
+                                        </li>
+                                    </ul>
                                 </li>
                                 <li>
                                     <a href="#" class="dropdown-toggle">
@@ -461,7 +475,7 @@ BlogAsset::register($this);
                                 <li class="nav-header hidden-sm hidden-xs">
                                     Components
                                 </li>
-                                <li class="active">
+                                <li>
                                     <a href="#" class="dropdown-toggle">
                                         <i class="fa fa-edit"></i>
                                         <span>Forms</span>
@@ -469,7 +483,7 @@ BlogAsset::register($this);
                                     </a>
                                     <ul class="submenu">
                                         <li>
-                                            <a href="form-elements.html" class="active">
+                                            <a href="form-elements.html">
                                                 Elements
                                             </a>
                                         </li>
@@ -691,55 +705,7 @@ BlogAsset::register($this);
             <div id="content-wrapper">
                 <div class="row">
                     <div class="col-lg-12">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <ol class="breadcrumb">
-                                    <li><a href="#">Home</a></li>
-                                    <li class="active"><span>Form Elements</span></li>
-                                </ol>
-
-                                <h1>Form Elements</h1>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="main-box">
-                                    <header class="main-box-header clearfix">
-                                        <h2>Basic elements</h2>
-                                    </header>
-
-                                    <div class="main-box-body clearfix">
-                                        <?= $content ?>
-
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="main-box">
-                                    <header class="main-box-header clearfix">
-                                        <h2>Basic elements</h2>
-                                    </header>
-
-                                    <div class="main-box-body clearfix">
-                                        <form role="form">
-                                            <div class="form-group">
-                                                <label for="exampleInputEmail1">Email address</label>
-                                                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="exampleInputPassword1">Password</label>
-                                                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="exampleTextarea">Textarea</label>
-                                                <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
+                        <?= $content ?>
                     </div>
                 </div>
             </div>

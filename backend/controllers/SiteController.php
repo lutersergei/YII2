@@ -1,6 +1,7 @@
 <?php
 namespace backend\controllers;
 
+use common\models\Tweets;
 use Yii;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
@@ -33,7 +34,12 @@ class SiteController extends Controller
                         'roles' => ['@'],
                     ],
                     [
-                        'actions' => ['create-tweet'],
+                        'actions' => ['tweet-timestamp'],
+                        'allow' => true,
+                        'roles' => ['?'],
+                    ],
+                    [
+                        'actions' => ['new-tweet'],
                         'allow' => true,
                         'roles' => ['?'],
                     ],
@@ -70,9 +76,46 @@ class SiteController extends Controller
         return $this->render('index');
     }
 
-    public function actionCreateTweet()
+    /**
+     * Add tweet with timestamp.
+     *
+     * @return string
+     */
+    public function actionTweetTimestamp()
     {
-        return $this->render('index');
+        $tweet = new Tweets();
+
+        date_default_timezone_set('Europe/Moscow');
+        $time = date("Y-m-d H:i:s");
+        $tweet->text = $time;
+        $tweet->save();
+        return $this->render('timestamp',[
+            'tweet' => $tweet,
+            'time' => $time
+        ]);
+    }
+
+    /**
+     * Add new tweet.
+     *
+     * @return string
+     */
+    public function actionNewTweet()
+    {
+        $tweet = new Tweets();
+        $post = Yii::$app->request->post('Tweets');
+        if (count($post))
+        {
+            $tweet->text = $post['text'];
+            if ($tweet->save())
+            {
+                $tweet = new Tweets();
+            }
+        }
+
+        return $this->render('new',[
+            'tweet' => $tweet
+        ]);
     }
 
     /**

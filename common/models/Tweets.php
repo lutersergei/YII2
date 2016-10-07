@@ -5,20 +5,19 @@ namespace common\models;
 use Yii;
 
 /**
- * This is the model class for table "{{%aneks}}".
+ * This is the model class for table "{{%tweets}}".
  *
  * @property integer $id
  * @property string $text
- * @property string $image
  */
-class Aneks extends \yii\db\ActiveRecord
+class Tweets extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return '{{%aneks}}';
+        return '{{%tweets}}';
     }
 
     /**
@@ -27,8 +26,8 @@ class Aneks extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['text'], 'string'],
-            [['image'], 'string', 'max' => 255],
+            [['text'], 'required'],
+            [['text'], 'string', 'max' => 255],
         ];
     }
 
@@ -40,7 +39,6 @@ class Aneks extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'text' => 'Text',
-            'image' => 'Image',
         ];
     }
 }
