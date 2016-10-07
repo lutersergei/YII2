@@ -83,7 +83,7 @@ $this->title = 'Твиттограмм';
                     <div class="blog-post-meta">
                         <span class="label label-light label-warning">Apps</span>
                         <p class="blog-post-date pull-right">January 3, 2016</p>
-                    </div>
+                    </div>sudo apt-get install pepperflashplugin-nonfree
                     <div class="blog-post-content">
                         <a href="post-image.html">
                             <h2 class="blog-post-title">In the universe</h2>
