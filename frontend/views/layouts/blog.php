@@ -44,32 +44,7 @@ BlogAsset::register($this);
         </div>
         <div class="navbar-collapse collapse navbar-responsive-collapse">
             <ul class="nav navbar-nav">
-                <li class="active dropdown">
-                    <a href="bootstrap-elements.html" data-target="#" class="dropdown-toggle" data-toggle="dropdown">Stories <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="home-fashion.html">Fashion</a></li>
-                        <li><a href="home-food.html">Food</a></li>
-                        <li><a href="home-music.html">Music</a></li>
-                        <li><a href="home-photography.html">Photography</a></li>
-                        <li><a href="home-technology.html">Technology</a></li>
-                        <li><a href="home-travel.html">Travel</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="bootstrap-elements.html" data-target="#" class="dropdown-toggle" data-toggle="dropdown">Filters <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="filter-category.html">Category</a></li>
-                        <li><a href="filter-author.html">Author</a></li>
-                        <li><a href="filter-date.html">Date</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="bootstrap-elements.html" data-target="#" class="dropdown-toggle" data-toggle="dropdown">Post <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="post-image.html">Image post</a></li>
-                        <li><a href="post-video.html">Video post</a></li>
-                    </ul>
-                </li>
+
                 <li><a href="page-about.html">About</a></li>
                 <li><a href="page-contact.html">Contact</a></li>
                 <?php
@@ -78,8 +53,13 @@ BlogAsset::register($this);
                     <li><a href="/index.php?r=blog/signup">Регистрация</a></li>
                     <li><a href="/index.php?r=blog/login">Войти</a></li>
                 <?php
+                else:
+                ?>
+                    <li><a href="/index.php?r=blog/logout">Выйти(<?= Yii::$app->user->identity->username?>)</a></li>
+                <?php
                 endif;
                 ?>
+
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#"><i class="fa fa-facebook"></i></a></li>
