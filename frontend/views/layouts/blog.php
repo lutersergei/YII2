@@ -72,19 +72,14 @@ BlogAsset::register($this);
                 </li>
                 <li><a href="page-about.html">About</a></li>
                 <li><a href="page-contact.html">Contact</a></li>
-                <li class="dropdown hidden-sm">
-                    <a href="bootstrap-elements.html" data-target="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="doc-buttons.html">Buttons</a></li>
-                        <li><a href="doc-forms.html">Forms</a></li>
-                        <li><a href="doc-icons.html">Icons</a></li>
-                        <li><a href="doc-indicators.html">Indicators</a></li>
-                        <li><a href="doc-navbars.html">Navbars</a></li>
-                        <li><a href="doc-panels.html">Panels</a></li>
-                        <li><a href="doc-tables.html">Tables</a></li>
-                        <li><a href="doc-typography.html">Typography</a></li>
-                    </ul>
-                </li>
+                <?php
+                if (Yii::$app->user->isGuest):
+                ?>
+                    <li><a href="/index.php?r=blog/signup">Регистрация</a></li>
+                    <li><a href="/index.php?r=blog/login">Войти</a></li>
+                <?php
+                endif;
+                ?>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#"><i class="fa fa-facebook"></i></a></li>

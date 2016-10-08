@@ -41,6 +41,7 @@ class BlogController extends Controller
      */
     public function actionIndex()
     {
+//        $username = Yii::$app->user->identity->username;
         $tweets = Tweets::find()->all();
         return $this->render('index', [
                 'tweets' => $tweets
