@@ -64,6 +64,16 @@ class BlogController extends Controller
         ]);
     }
 
+    public function actionAbout()
+    {
+        return $this->render('page-about.html');
+    }
+
+    public function actionContact()
+    {
+        return $this->render('page-contact.html');
+    }
+
     /**
      * Signs user up.
      *

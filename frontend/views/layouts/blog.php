@@ -45,8 +45,8 @@ BlogAsset::register($this);
         <div class="navbar-collapse collapse navbar-responsive-collapse">
             <ul class="nav navbar-nav">
 
-                <li><a href="page-about.html">About</a></li>
-                <li><a href="page-contact.html">Contact</a></li>
+                <li><a href="/index.php?r=blog/about">About</a></li>
+                <li><a href="/index.php?r=blog/contact">Contact</a></li>
                 <?php
                 if (Yii::$app->user->isGuest):
                 ?>
@@ -62,9 +62,9 @@ BlogAsset::register($this);
 
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                <li><a href="/"><i class="fa fa-facebook"></i></a></li>
+                <li><a href="/"><i class="fa fa-google-plus"></i></a></li>
+                <li><a href="/"><i class="fa fa-twitter"></i></a></li>
             </ul>
         </div>
     </div>
