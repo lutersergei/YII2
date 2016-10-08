@@ -107,6 +107,9 @@ class SiteController extends Controller
         if (count($post))
         {
             $tweet->text = $post['text'];
+            $tweet->user_id = 2;
+            var_dump($tweet);
+
             if ($tweet->save())
             {
                 $tweet = new Tweets();

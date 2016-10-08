@@ -112,15 +112,6 @@ BlogAsset::register($this);
             <div class="sidebar-module">
                 <div class="panel panel-default">
                     <div class="panel-body">
-                        <h4>About</h4>
-                        <p>Donec ut libero sed arcu vehicula ultricies a non tortor. <em>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</em> Aenean ut gravida lorem.</p>
-                    </div>
-                </div>
-            </div><!-- /.sidebar-module -->
-
-            <div class="sidebar-module">
-                <div class="panel panel-default">
-                    <div class="panel-body">
                         <h4>Categories</h4>
                         <ol class="categories list-unstyled">
                             <li>
@@ -158,23 +149,6 @@ BlogAsset::register($this);
                             <li><a href="filter-date.html">April 2015</a></li>
                             <li><a href="filter-date.html">March 2015</a></li>
                         </ol>
-                    </div>
-                </div>
-            </div><!-- /.sidebar-module -->
-
-            <div class="sidebar-module">
-                <div class="panel panel-default">
-                    <div class="panel-body">
-                        <h4>Newsletter</h4>
-                        <div class="form-group label-floating form-group-sm is-empty">
-                            <label class="control-label" for="name">Name</label>
-                            <input id="name" class="form-control" type="text">
-                            <span class="material-input"></span></div>
-                        <div class="form-group label-floating form-group-sm is-empty">
-                            <label class="control-label" for="email">E-mail</label>
-                            <input id="email" class="form-control" type="text">
-                            <span class="material-input"></span></div>
-                        <a href="#" class="btn btn-default btn-raised btn-sm btn-block">Subscribe</a>
                     </div>
                 </div>
             </div><!-- /.sidebar-module -->

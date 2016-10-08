@@ -7,11 +7,11 @@ $this->title = 'Твиттограмм';
 ?>
 
 <div class="row">
-    <div class="col-sm-6">
-        <?php
-        foreach ($tweets as $tweet)
-        {
-            ?>
+    <?php
+    foreach ($tweets as $tweet)
+    {
+        ?>
+        <div class="col-sm-6">
             <section class="blog-post">
                 <div class="panel panel-default">
                     <img src="img/technology/unsplash-2.jpg" class="img-responsive">
@@ -30,10 +30,11 @@ $this->title = 'Твиттограмм';
                     </div>
                 </div>
             </section><!-- /.blog-post -->
-            <?php
-        }
-        ?>
-    </div>
+        </div>
+
+        <?php
+    }
+    ?>
     <div class="col-sm-6">
         <section class="blog-post">
             <div class="panel panel-default">
@@ -56,6 +57,8 @@ $this->title = 'Твиттограмм';
                 </div>
             </div>
         </section><!-- /.blog-post -->
+    </div>
+    <div class="col-sm-6">
         <section class="blog-post">
             <div class="panel panel-default">
                 <img src="img/technology/unsplash-4.jpg" class="img-responsive">
@@ -77,6 +80,8 @@ $this->title = 'Твиттограмм';
                 </div>
             </div>
         </section><!-- /.blog-post -->
+    </div>
+    <div class="col-sm-6">
         <section class="blog-post">
             <div class="panel panel-default">
                 <div class="panel-body">
@@ -100,6 +105,7 @@ $this->title = 'Твиттограмм';
         </section><!-- /.blog-post -->
     </div>
 </div>
+
 <!--        <nav>-->
 <!--            <ul class="pager">-->
 <!--                <li><a class="withripple" href="#">Previous</a></li>-->

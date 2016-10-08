@@ -6,6 +6,7 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use common\models\Tweets;
+use frontend\models\SignupForm;
 
 /**
  * Blog controller
@@ -58,6 +59,27 @@ class BlogController extends Controller
         $tweet = Tweets::find()->where(['id' => $id])->one();
         return $this->render('view', [
             'tweet' => $tweet
+        ]);
+    }
+
+    /**
+     * Signs user up.
+     *
+     * @return mixed
+     */
+    public function actionSignup()
+    {
+        $model = new SignupForm();
+        if ($model->load(Yii::$app->request->post())) {
+            if ($user = $model->signup()) {
+                if (Yii::$app->getUser()->login($user)) {
+                    return $this->goHome();
+                }
+            }
+        }
+
+        return $this->render('signup', [
+            'model' => $model,
         ]);
     }
 
