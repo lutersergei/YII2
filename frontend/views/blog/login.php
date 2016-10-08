@@ -2,29 +2,29 @@
 
 /* @var $this yii\web\View */
 /* @var $form yii\bootstrap\ActiveForm */
-/* @var $model \frontend\models\SignupForm */
+/* @var $model \common\models\LoginForm */
 
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 
-$this->title = 'Регистрация нового пользователя';
+$this->title = 'Вход';
 ?>
-<div class="site-signup">
+<div class="site-login">
+
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>Пожалуйста, заполните следующие поля для регистрации:</p>
-    <br>
+    <p>Пожалуйста, заполните следующие поля для входа:</p>
+
     <div class="row">
         <div class="col-lg-10">
             <?php $form = ActiveForm::begin([
-                'id' => 'form-signup',
+                'id' => 'login-form',
                 'options' => ['class' => 'form-horizontal'],
                 'layout' => 'horizontal',
                 'fieldConfig' => [
                     'template' => "{label}\n{beginWrapper}\n{input}\n{hint}\n{error}\n{endWrapper}",
                     'horizontalCssClasses' => [
                         'label' => 'col-sm-3',
-//                        'offset' => 'col-sm-offset-4',
                         'wrapper' => 'col-sm-9',
                         'error' => '',
                         'hint' => '',
@@ -34,12 +34,16 @@ $this->title = 'Регистрация нового пользователя';
 
                 <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
 
-                <?= $form->field($model, 'email') ?>
-
                 <?= $form->field($model, 'password')->passwordInput() ?>
 
+                <?= $form->field($model, 'rememberMe')->checkbox() ?>
+
+<!--                <div style="color:#999;margin:1em 0">-->
+<!--                    If you forgot your password you can --><?//= Html::a('reset it', ['site/request-password-reset']) ?><!--.-->
+<!--                </div>-->
+
                 <div class="col-sm-offset-4">
-                    <?= Html::submitButton('Зарегистрироваться', ['class' => 'btn btn-primary btn-raised', 'name' => 'signup-button']) ?>
+                    <?= Html::submitButton('Войти', ['class' => 'btn btn-primary btn-raised', 'name' => 'login-button']) ?>
                 </div>
 
             <?php ActiveForm::end(); ?>
