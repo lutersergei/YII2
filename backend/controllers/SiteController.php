@@ -29,20 +29,20 @@ class SiteController extends Controller
                         'allow' => true,
                     ],
                     [
-                        'actions' => ['logout', 'index'],
+                        'actions' => ['logout', 'index', 'tweet-timestamp', 'new-tweet'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
-                    [
-                        'actions' => ['tweet-timestamp'],
-                        'allow' => true,
-                        'roles' => ['?'],
-                    ],
-                    [
-                        'actions' => ['new-tweet'],
-                        'allow' => true,
-                        'roles' => ['?'],
-                    ],
+//                    [
+//                        'actions' => ['tweet-timestamp'],
+//                        'allow' => true,
+//                        'roles' => ['?'],
+//                    ],
+//                    [
+//                        'actions' => ['new-tweet'],
+//                        'allow' => true,
+//                        'roles' => ['?'],
+//                    ],
                 ],
             ],
             'verbs' => [
@@ -152,5 +152,6 @@ class SiteController extends Controller
         Yii::$app->user->logout();
 
         return $this->goHome();
+
     }
 }

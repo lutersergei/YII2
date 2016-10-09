@@ -9,6 +9,8 @@ use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use common\widgets\Alert;
+use yii\widgets\ActiveForm;
+
 
 BlogAsset::register($this);
 ?>
@@ -239,7 +241,6 @@ BlogAsset::register($this);
                                     </div>
                                 </form>
                             </div>
-
                         </li>
                         <li class="dropdown profile-dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -253,11 +254,20 @@ BlogAsset::register($this);
                                 <li><a href="#"><i class="fa fa-power-off"></i>Logout</a></li>
                             </ul>
                         </li>
-                        <li class="hidden-xxs">
-                            <a class="btn">
-                                <i class="fa fa-power-off"></i>
-                            </a>
-                        </li>
+
+                            <?php
+                            if (!Yii::$app->user->isGuest)
+                            {
+                                echo '<li>' . Html::beginForm(['/site/logout'], 'post')
+                                . Html::submitInput(
+                                    'Выйти (' . Yii::$app->user->identity->username . ')',
+                                    ['class' => 'btn btn-danger']
+                                )
+                                . Html::endForm()
+                                . '</li>';
+                            }
+                            ?>
+
                     </ul>
                 </div>
             </div>

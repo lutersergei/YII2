@@ -51,7 +51,15 @@ class LoginForm extends Model
         if (!$this->hasErrors()) {
             $user = $this->getUser();
             if (!$user || !$user->validatePassword($this->password)) {
-                $this->addError($attribute, 'Incorrect username or password.');
+                $this->addError($attribute, 'Неправильное Имя или Пароль');
+            }
+            else
+            {
+                //Проверка роли пользователя
+                if (!($user->role == User::ROLE_ADMIN))
+                {
+                    $this->addError($attribute, 'Недостаточно прав доступа');
+                }
             }
         }
     }
