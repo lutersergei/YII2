@@ -5,29 +5,57 @@
 /* @var $publishForm \frontend\models\PublishForm*/
 
 use yii\helpers\Html;
-use yii\widgets\ActiveForm;
+use yii\bootstrap\ActiveForm;
 $this->title = 'Твиттограмм';
 ?>
-
 <div class="row">
-    <div class="col-lg-12">
-        <?php
-        if (!Yii::$app->user->isGuest) {
-            $form = ActiveForm::begin([
-                'id' => 'publishForm',
-                'options' => ['class' => 'form-horizontal'],
-            ]);
-            echo $form->field($publishForm, 'text')->textarea();
-            echo $form->field($publishForm, 'image')->fileInput();
-            ?>
-            <div class="form-group">
-                <div class="col-lg-offset-1 col-lg-11">
-                    <?= Html::submitButton('Отправить', ['class' => 'btn btn-primary']) ?>
+    <?php
+    if (!Yii::$app->user->isGuest) {
+        ?>
+        <div class="modal fade" id="tweetModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <section class="blog-post">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h2 class="panel-title">Новый ИнстаТвит</h2>
+                            </div>
+                            <div class="panel-body">
+                                <div class="blog-post-content">
+                                    <?php
+                                    $form = ActiveForm::begin([
+                                        'id' => 'publishForm',
+                                        'layout' => 'horizontal',
+                                        'fieldConfig' => [
+                                            'template' => "{label}\n{beginWrapper}\n{input}\n{hint}\n{error}\n{endWrapper}",
+                                            'horizontalCssClasses' => [
+                                                'label' => 'col-sm-2',
+                                                'wrapper' => 'col-sm-10',
+                                            ],
+                                        ],
+                                    ]);
+                                    echo $form->field($publishForm, 'text')->textarea(['rows' => 5])->label('Текст');
+                                    echo $form->field($publishForm, 'image')->fileInput();
+                                    ?>
+                                    <div class="form-group">
+                                        <div class="col-sm-offset-2 col-sm-10">
+                                            <?= Html::submitButton('Отправить', ['class' => 'btn btn-primary']) ?>
+                                        </div>
+                                    </div>
+                                    <?php ActiveForm::end();
+                                    ?>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
                 </div>
             </div>
-            <?php ActiveForm::end();
-        }?>
-    </div>
+        </div>
+        <a type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#tweetModal">
+            Написать <i class="fa fa-twitter"></i>
+        </a>
+        <?php
+    }?>
     <?php
     foreach ($tweets as $tweet)
     {
@@ -39,12 +67,9 @@ $this->title = 'Твиттограмм';
                     <div class="panel-body">
                         <div class="blog-post-meta">
                             <span class="label label-light label-primary">Тег</span>
-                            <p class="blog-post-date pull-right">Дата</p>
+                            <p class="blog-post-date pull-right"><?= \common\models\User::username ?></p>
                         </div>
                         <div class="blog-post-content">
-                            <a href="post-image.html">
-                                <h2 class="blog-post-title">Заголовок</h2>
-                            </a>
                             <p><?= $tweet->text ?></p>
                             <a class="btn btn-info" href="/index.php?r=blog/view&id=<?=$tweet->id?>">Читать...</a>
                         </div>
