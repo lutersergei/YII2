@@ -1,9 +1,9 @@
 <?php
-namespace common\models;
+namespace backend\models;
 
 use Yii;
 use yii\base\Model;
-
+use common\models\User;
 /**
  * Login form
  */
@@ -53,6 +53,14 @@ class LoginForm extends Model
             if (!$user || !$user->validatePassword($this->password)) {
                 $this->addError($attribute, 'Неправильное Имя или Пароль');
             }
+            else
+            {
+                //Проверка роли пользователя
+                if ($user->role !== User::ROLE_ADMIN)
+                {
+                    $this->addError($attribute, 'Недостаточно прав доступа');
+                }
+            }
         }
     }
 
@@ -80,7 +88,6 @@ class LoginForm extends Model
         if ($this->_user === null) {
             $this->_user = User::findByUsername($this->username);
         }
-
         return $this->_user;
     }
 }

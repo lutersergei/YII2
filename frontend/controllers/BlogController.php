@@ -1,6 +1,7 @@
 <?php
 namespace frontend\controllers;
 
+use frontend\models\PublishForm;
 use Yii;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
@@ -8,6 +9,7 @@ use yii\filters\AccessControl;
 use common\models\Tweets;
 use frontend\models\SignupForm;
 use common\models\LoginForm;
+use yii\web\UploadedFile;
 
 /**
  * Blog controller
@@ -42,10 +44,27 @@ class BlogController extends Controller
      */
     public function actionIndex()
     {
-//        $username = Yii::$app->user->identity->username;
         $tweets = Tweets::find()->all();
+
+        $publishForm = new PublishForm();
+        $post = Yii::$app->request->post('PublishForm');
+        if (count($post)){
+            var_dump($post);
+            $picture = UploadedFile::getInstance($publishForm, 'image');
+            $image = null;
+
+            if ($picture) {
+                $image = PublishForm::uploadImage($picture);
+            }
+            $publishForm->image = $image;
+            $publishForm->text = $post['text'];
+            if ($publishForm->createTweet()){
+                $this->refresh();
+            }
+        }
         return $this->render('index', [
-                'tweets' => $tweets
+            'tweets' => $tweets,
+            'publishForm' => $publishForm,
             ]);
     }
 

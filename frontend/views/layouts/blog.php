@@ -79,6 +79,13 @@ BlogAsset::register($this);
         <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
 
             <div class="sidebar-module">
+                <button type="button" class="btn btn-primary btn-lg btn-block">
+                    <i class="fa fa-twitter"></i>
+                    Добавить ИнстаТвит
+                </button>
+            </div><!-- /.sidebar-module -->
+
+            <div class="sidebar-module">
                 <div class="form-group is-empty">
                     <input class="form-control" placeholder="Search" type="text">
                     <span class="material-input"></span></div>

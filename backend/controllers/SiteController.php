@@ -6,7 +6,8 @@ use Yii;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
-use common\models\LoginForm;
+use backend\models\LoginForm;
+use yii\web\User;
 
 /**
  * Site controller
@@ -88,6 +89,7 @@ class SiteController extends Controller
         date_default_timezone_set('Europe/Moscow');
         $time = date("Y-m-d H:i:s");
         $tweet->text = $time;
+        $tweet->user_id = Yii::$app->user->id;
         $tweet->save();
         return $this->render('timestamp',[
             'tweet' => $tweet,
@@ -107,8 +109,7 @@ class SiteController extends Controller
         if (count($post))
         {
             $tweet->text = $post['text'];
-            $tweet->user_id = 2;
-            var_dump($tweet);
+            $tweet->user_id = Yii::$app->user->id;
 
             if ($tweet->save())
             {

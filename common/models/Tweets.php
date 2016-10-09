@@ -16,6 +16,10 @@ use Yii;
  */
 class Tweets extends \yii\db\ActiveRecord
 {
+    const IMAGE_DIR = '../../frontend/web/images/';
+    const IMAGE_PATH = '/images/';
+    const MAX_IMAGE_PATH_LENGTH = 255;
+
     /**
      * @inheritdoc
      */
@@ -33,7 +37,7 @@ class Tweets extends \yii\db\ActiveRecord
             [['user_id'], 'required'],
             [['user_id'], 'integer'],
             [['text'], 'string'],
-            [['image'], 'string', 'max' => 255],
+            [['image'], 'string', 'max' => self::MAX_IMAGE_PATH_LENGTH],
 //            [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_id' => 'id']],
         ];
     }
@@ -57,5 +61,14 @@ class Tweets extends \yii\db\ActiveRecord
     public function getUser()
     {
         return $this->hasOne(User::className(), ['id' => 'user_id']);
+    }
+
+    public static function getImageDir()
+    {
+        if (!is_dir(self::IMAGE_DIR))
+        {
+            mkdir(self::IMAGE_DIR);
+        }
+        return self::IMAGE_DIR;
     }
 }
