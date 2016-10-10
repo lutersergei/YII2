@@ -9,7 +9,7 @@ $this->title = 'Твиттограмм';
     <div class="col-sm-12">
         <section class="blog-post">
             <div class="panel panel-default">
-                <img src="img/technology/unsplash-2.jpg" class="img-responsive">
+                <img src="<?= $tweet->image ?>" class="img-responsive">
                 <div class="panel-body">
                     <div class="blog-post-meta">
                         <span class="label label-light label-primary">Тег</span>

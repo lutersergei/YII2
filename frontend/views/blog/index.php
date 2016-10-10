@@ -6,7 +6,8 @@
 
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
-$this->title = 'Твиттограмм';
+use common\models\User;
+use common\models\Tweets;
 ?>
 <div class="row">
     <?php
@@ -59,23 +60,42 @@ $this->title = 'Твиттограмм';
     <?php
     foreach ($tweets as $tweet)
     {
+        $tweet_content = $tweet->getContent();
+        $image_html = '';
+        $text_html = '';
+        if (($tweet_content->mode === Tweets::MODE_BOTH)||($tweet_content->mode === Tweets::MODE_IMAGE))
+        {
+            $image_src = $tweet_content->image;
+            $image_html = <<<HTML
+<img src="{$image_src}" class="img-responsive"/>
+HTML;
+        }
+        if (($tweet_content->mode === Tweets::MODE_BOTH)||($tweet_content->mode === Tweets::MODE_TEXT))
+        {
+            $text_html = <<<HTML
+<p>{$tweet_content->text}</p>
+HTML;
+        }
+
         ?>
         <div class="col-sm-6">
             <section class="blog-post">
                 <div class="panel panel-default">
-                    <img src="<?= $tweet->image ?>" class="img-responsive">
+                    <?= $image_html?>
                     <div class="panel-body">
                         <div class="blog-post-meta">
-                            <span class="label label-light label-primary">Тег</span>
-                            <p class="blog-post-date pull-right"><?= \common\models\User::username ?></p>
+                            <span class="label label-light label-primary">Теги</span>
+                            <p class="blog-post-date pull-right">Автор: <?php
+                                echo User::find()->where(['id' => $tweet->user_id])->one()->username;
+                                ?></p>
                         </div>
                         <div class="blog-post-content">
-                            <p><?= $tweet->text ?></p>
+                            <?= $text_html ?>
                             <a class="btn btn-info" href="/index.php?r=blog/view&id=<?=$tweet->id?>">Читать...</a>
                         </div>
                     </div>
                 </div>
-            </section><!-- /.blog-post -->
+            </section>
         </div>
 
         <?php

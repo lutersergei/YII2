@@ -49,7 +49,6 @@ class BlogController extends Controller
         $publishForm = new PublishForm();
         $post = Yii::$app->request->post('PublishForm');
         if (count($post)){
-            var_dump($post);
             $picture = UploadedFile::getInstance($publishForm, 'image');
             $image = null;
 
