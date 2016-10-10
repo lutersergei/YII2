@@ -66,15 +66,6 @@ class Tweets extends \yii\db\ActiveRecord
         return $this->hasOne(User::className(), ['id' => 'user_id']);
     }
 
-    public static function getImageDir()
-    {
-        if (!is_dir(self::IMAGE_DIR))
-        {
-            mkdir(self::IMAGE_DIR);
-        }
-        return self::IMAGE_DIR;
-    }
-
     public function getContent()
     {
         $result = new \stdClass();

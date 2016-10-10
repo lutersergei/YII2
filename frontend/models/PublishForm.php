@@ -48,23 +48,4 @@ class PublishForm extends Model
         $tweet->user_id = Yii::$app->user->id;
         return $tweet->save() ? $tweet : null;
     }
-
-    /**
-     * @param $picture UploadedFile
-     * @return bool result of upload
-     */
-
-    public static function uploadImage($picture)
-    {
-        $pictureFilename = Tweets::getImageDir() . $picture->name;
-
-        if ($picture->saveAs($pictureFilename))
-        {
-            return Tweets::IMAGE_PATH . $picture->name;
-        }
-        else
-        {
-            return null;
-        }
-    }
 }
