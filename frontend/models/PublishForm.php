@@ -4,7 +4,6 @@ namespace frontend\models;
 use common\models\Tweets;
 use Yii;
 use yii\base\Model;
-use yii\web\UploadedFile;
 
 /**
  * ContactForm is the model behind the contact form.

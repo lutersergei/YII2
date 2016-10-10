@@ -63,15 +63,16 @@ use common\models\Tweets;
         $tweet_content = $tweet->getContent();
         $image_html = '';
         $text_html = '';
-        if (($tweet_content->mode === Tweets::MODE_BOTH)||($tweet_content->mode === Tweets::MODE_IMAGE))
-        {
-            $image_src = $tweet_content->image;
+        if (($tweet_content->mode === Tweets::MODE_BOTH)||($tweet_content->mode === Tweets::MODE_IMAGE)) {
+            if ($tweet->getImage()) {
+                $image_src = $tweet->getImage();
+            }
+            else $image_src = '/img/technology/no_photo.jpg';
             $image_html = <<<HTML
 <img src="{$image_src}" class="img-responsive"/>
 HTML;
         }
-        if (($tweet_content->mode === Tweets::MODE_BOTH)||($tweet_content->mode === Tweets::MODE_TEXT))
-        {
+        if (($tweet_content->mode === Tweets::MODE_BOTH)||($tweet_content->mode === Tweets::MODE_TEXT)) {
             $text_html = <<<HTML
 <p>{$tweet_content->text}</p>
 HTML;

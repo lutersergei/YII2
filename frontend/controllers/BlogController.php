@@ -1,6 +1,7 @@
 <?php
 namespace frontend\controllers;
 
+use common\models\PictureUpload;
 use frontend\models\PublishForm;
 use Yii;
 use yii\web\Controller;
@@ -53,7 +54,7 @@ class BlogController extends Controller
             $image = null;
 
             if ($picture) {
-                $image = PublishForm::uploadImage($picture);
+                $image = PictureUpload::uploadImage($picture);
             }
             $publishForm->image = $image;
             $publishForm->text = $post['text'];
