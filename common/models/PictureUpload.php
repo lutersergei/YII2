@@ -35,13 +35,18 @@ class PictureUpload extends Model
         }
     }
 
+    /**
+     * @param $picture string filename
+     * @return array|null mime type and content of picture
+     */
     public static function readImage($picture)
     {
         if (file_exists(self::getImageDir() . '/' . $picture))
         {
-            return file_get_contents(self::getImageDir() . '/' . $picture);
+            $fileInfo[] = file_get_contents(self::getImageDir() . '/' . $picture);
+            $fileInfo[] = mime_content_type(self::getImageDir() . '/' . $picture);
+            return $fileInfo;
         }
-        // todo add default image
-        else return null;
+        return null;
     }
 }

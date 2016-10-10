@@ -84,13 +84,21 @@ class Tweets extends \yii\db\ActiveRecord
         return $result;
     }
 
+    /**
+     * @return null|string base64 string
+     */
     public function getImage()
     {
-        $image = PictureUpload::readImage($this->image);
-        if ($image){
-            return 'data:image/jpeg;base64,' . base64_encode($image);
+        $imageInfo = PictureUpload::readImage($this->image);
+        if ($imageInfo){
+            $position = strpos($imageInfo[1], 'image');
+            if ($position !== false)
+            {
+                return 'data:' . $imageInfo[1] . ';base64,' . base64_encode($imageInfo[0]);
+            }
+            return null;
         }
-        else return null;
+        return null;
 
     }
 }
