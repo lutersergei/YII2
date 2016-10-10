@@ -24,7 +24,6 @@ $this->title = 'Регистрация нового пользователя';
                     'template' => "{label}\n{beginWrapper}\n{input}\n{hint}\n{error}\n{endWrapper}",
                     'horizontalCssClasses' => [
                         'label' => 'col-sm-3',
-//                        'offset' => 'col-sm-offset-4',
                         'wrapper' => 'col-sm-9',
                         'error' => '',
                         'hint' => '',
