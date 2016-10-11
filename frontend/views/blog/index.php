@@ -63,50 +63,43 @@ use common\models\Tweets;
         $tweet_content = $tweet->getContent();
         $image_html = '';
         $text_html = '';
-        if (($tweet_content->mode === Tweets::MODE_BOTH)||($tweet_content->mode === Tweets::MODE_IMAGE)) {
-            if ($tweet->getImage()) {
-                $image_src = $tweet->getImage();
-            }
-            else $image_src = '/img/technology/no_photo.jpg';
-            $image_html = <<<HTML
+        if ($tweet_content->mode !== Tweets::MODE_NOTHING) {
+            if (($tweet_content->mode === Tweets::MODE_BOTH) || ($tweet_content->mode === Tweets::MODE_IMAGE)) {
+                if ($tweet->getImage()) {
+                    $image_src = $tweet->getImage();
+                } else $image_src = '/img/technology/no_photo.jpg';
+                $image_html = <<<HTML
 <img src="{$image_src}" class="img-responsive"/>
 HTML;
-        }
-        if (($tweet_content->mode === Tweets::MODE_BOTH)||($tweet_content->mode === Tweets::MODE_TEXT)) {
-            $text_html = <<<HTML
+            }
+            if (($tweet_content->mode === Tweets::MODE_BOTH) || ($tweet_content->mode === Tweets::MODE_TEXT)) {
+                $text_html = <<<HTML
 <p>{$tweet_content->text}</p>
 HTML;
-        }
+            }
 
-        ?>
-        <div class="col-sm-6">
-            <section class="blog-post">
-                <div class="panel panel-default">
-                    <?= $image_html?>
-                    <div class="panel-body">
-                        <div class="blog-post-meta">
-                            <span class="label label-light label-primary">Теги</span>
-                            <p class="blog-post-date pull-right">Автор: <?php
-                                echo User::find()->where(['id' => $tweet->user_id])->one()->username;
-                                ?></p>
-                        </div>
-                        <div class="blog-post-content">
-                            <?= $text_html ?>
-                            <a class="btn btn-info" href="/index.php?r=blog/view&id=<?=$tweet->id?>">Читать...</a>
+            ?>
+            <div class="col-sm-6">
+                <section class="blog-post">
+                    <div class="panel panel-default">
+                        <?= $image_html ?>
+                        <div class="panel-body">
+                            <div class="blog-post-meta">
+                                <span class="label label-light label-primary">Теги</span>
+                                <p class="blog-post-date pull-right">Автор: <?php
+                                    echo User::find()->where(['id' => $tweet->user_id])->one()->username;
+                                    ?></p>
+                            </div>
+                            <div class="blog-post-content">
+                                <?= $text_html ?>
+                                <a class="btn btn-info" href="/index.php?r=blog/view&id=<?= $tweet->id ?>">Читать...</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </section>
-        </div>
-
-        <?php
+                </section>
+            </div>
+            <?php
+        }
     }
     ?>
 </div>
-
-<!--        <nav>-->
-<!--            <ul class="pager">-->
-<!--                <li><a class="withripple" href="#">Previous</a></li>-->
-<!--                <li><a class="withripple" href="#">Next</a></li>-->
-<!--            </ul>-->
-<!--        </nav>-->

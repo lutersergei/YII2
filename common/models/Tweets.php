@@ -19,6 +19,7 @@ class Tweets extends \yii\db\ActiveRecord
     const IMAGE_DIR = '../../frontend/web/images/';
     const IMAGE_PATH = '/images/';
     const MAX_IMAGE_PATH_LENGTH = 255;
+    const MODE_NOTHING = 0;
     const MODE_IMAGE = 1;
     const MODE_TEXT = 10;
     const MODE_BOTH = 100;
@@ -66,10 +67,13 @@ class Tweets extends \yii\db\ActiveRecord
         return $this->hasOne(User::className(), ['id' => 'user_id']);
     }
 
+    /**
+     * @return \stdClass
+     */
     public function getContent()
     {
         $result = new \stdClass();
-
+        $result->mode = self::MODE_NOTHING;
         if ($this->image){
             $result->image = $this->image;
             $result->mode = self::MODE_IMAGE;

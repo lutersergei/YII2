@@ -21,7 +21,6 @@ class PublishForm extends Model
         return [
             [['text'], 'string'],
             [['image'], 'string', 'max' => Tweets::MAX_IMAGE_PATH_LENGTH],
-//            ['verifyCode', 'captcha'],
         ];
     }
 
@@ -39,6 +38,11 @@ class PublishForm extends Model
     public function createTweet()
     {
         if (!$this->validate()) {
+            return null;
+        }
+        if (($this->text == null) && ($this->image == null))
+        {
+            $this->addError('text', 'Необходимо заполнить хотя бы одно поле');
             return null;
         }
         $tweet = new Tweets();
