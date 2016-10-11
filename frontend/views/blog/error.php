@@ -8,7 +8,7 @@
 use yii\helpers\Html;
 
 $this->title = $name;
-//$this->context->layout = 'blog.php';
+$this->context->layout = 'blog.php';
 ?>
 <div class="site-error">
 
@@ -19,10 +19,10 @@ $this->title = $name;
     </div>
 
     <p>
-        The above error occurred while the Web server was processing your request.
+        Данная ошибка произошла при обработке вашего запроса.
     </p>
     <p>
-        Please contact us if you think this is a server error. Thank you.
+        Пожалуйста, свяжитесь с нами, если вы думаете, что это ошибка сервера. Спасибо.
     </p>
 
 </div>
