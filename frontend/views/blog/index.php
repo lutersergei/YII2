@@ -92,7 +92,7 @@ HTML;
                             </div>
                             <div class="blog-post-content">
                                 <?= $text_html ?>
-                                <a class="btn btn-info" href="/index.php?r=blog/view&id=<?= $tweet->id ?>">Читать...</a>
+                                <a class="btn btn-info" href="/blog/view/<?= $tweet->id ?>">Читать...</a>
                             </div>
                         </div>
                     </div>

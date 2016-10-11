@@ -31,7 +31,7 @@ BlogAsset::register($this);
 
 <div class="navbar navbar-material-blog navbar-primary navbar-absolute-top">
 
-    <div class="navbar-image" style="background-image: url('img/technology/unsplash-6.jpg');background-position: center 40%;"></div>
+    <div class="navbar-image" style="background-image: url('/img/technology/unsplash-6.jpg');background-position: center 40%;"></div>
 
     <div class="navbar-wrapper container">
         <div class="navbar-header">
@@ -45,17 +45,17 @@ BlogAsset::register($this);
         <div class="navbar-collapse collapse navbar-responsive-collapse">
             <ul class="nav navbar-nav">
 
-                <li><a href="/index.php?r=blog/about">About</a></li>
-                <li><a href="/index.php?r=blog/contact">Contact</a></li>
+                <li><a href="/blog/about">About</a></li>
+                <li><a href="/blog/contact">Contact</a></li>
                 <?php
                 if (Yii::$app->user->isGuest):
                 ?>
-                    <li><a href="/index.php?r=blog/signup">Регистрация</a></li>
-                    <li><a href="/index.php?r=blog/login">Войти</a></li>
+                    <li><a href="/blog/signup">Регистрация</a></li>
+                    <li><a href="/blog/login">Войти</a></li>
                 <?php
                 else:
                 ?>
-                    <li><a href="/index.php?r=blog/logout">Выйти(<?= Yii::$app->user->identity->username?>)</a></li>
+                    <li><a href="/blog/logout">Выйти(<?= Yii::$app->user->identity->username?>)</a></li>
                 <?php
                 endif;
                 ?>
