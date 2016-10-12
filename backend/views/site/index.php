@@ -166,6 +166,10 @@ $this->title = 'My Yii Application';
                     <span class="fa fa-users"></span> Пользователи
                 </a>
 
+                <a href="/site/feed" type="button" class="btn btn-primary btn-lg">
+                    <span class="fa fa-th-list"></span> Твиты
+                </a>
+
 <!--                <button type="button" class="btn btn-success btn-lg">-->
 <!--                    <span class="fa fa-heart"></span> Icon button-->
 <!--                </button>-->

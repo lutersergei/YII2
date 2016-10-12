@@ -1,7 +1,6 @@
 <?php
 namespace backend\controllers;
 
-use backend\models\UsersForm;
 use common\models\Tweets;
 use Yii;
 use yii\web\Controller;
@@ -30,20 +29,10 @@ class SiteController extends Controller
                         'allow' => true,
                     ],
                     [
-                        'actions' => ['logout', 'index', 'tweet-timestamp', 'new-tweet', 'users', 'user-delete'],
+                        'actions' => ['logout', 'index', 'tweet-timestamp', 'new-tweet', 'users', 'user-delete', 'feed', 'tweet-delete'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
-//                    [
-//                        'actions' => ['tweet-timestamp'],
-//                        'allow' => true,
-//                        'roles' => ['?'],
-//                    ],
-//                    [
-//                        'actions' => ['new-tweet'],
-//                        'allow' => true,
-//                        'roles' => ['?'],
-//                    ],
                 ],
             ],
             'verbs' => [
@@ -155,6 +144,26 @@ class SiteController extends Controller
 
         return $this->goHome();
 
+    }
+
+    public function actionFeed()
+    {
+        $tweets = Tweets::find()->all();
+        return $this->render('feed', [
+            'tweets' => $tweets,
+        ]);
+    }
+
+    public function actionTweetDelete()
+    {
+        $id = (int)Yii::$app->request->get('id');
+        $tweet = Tweets::find()->where(['id' => $id])->one();
+        if ($tweet)
+        {
+            $tweet->delete();
+        }
+        header('Location:/site/feed');
+        die();
     }
 
     public function actionUsers()
