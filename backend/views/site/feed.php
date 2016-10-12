@@ -22,11 +22,11 @@ use yii\helpers\Url;
                     <li class="clearfix">
                         <div>
                             <p>
-                                <?= User::find()->where(['id' => $tweet->user_id])->one()->username ?>
+                                <?= $tweet->user->username ?>
                             </p>
                         </div>
                         <div class="time-ago">
-                            <i class="fa fa-clock-o"></i>Дата написания
+                            <i class="fa fa-clock-o"></i> <?= $tweet->create_at ?>
                         </div>
                         <div class="name">
                             <p>

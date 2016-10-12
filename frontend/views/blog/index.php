@@ -87,7 +87,7 @@ HTML;
                             <div class="blog-post-meta">
                                 <span class="label label-light label-primary">Теги</span>
                                 <p class="blog-post-date pull-right">Автор: <?php
-                                    echo User::find()->where(['id' => $tweet->user_id])->one()->username;
+                                    echo $tweet->user->username;
                                     ?></p>
                             </div>
                             <div class="blog-post-content">

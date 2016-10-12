@@ -11,6 +11,7 @@ use Yii;
  * @property integer $user_id
  * @property string $text
  * @property string $image
+ * @property string $create_at
  *
  * @property User $user
  */
@@ -56,6 +57,7 @@ class Tweets extends \yii\db\ActiveRecord
             'user_id' => 'User ID',
             'text' => 'Text',
             'image' => 'Image',
+            'create_at' => 'Дата создания'
         ];
     }
 
