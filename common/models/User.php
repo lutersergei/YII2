@@ -30,6 +30,11 @@ class User extends ActiveRecord implements IdentityInterface
     const ROLE_USER = 0;
     const ROLE_ADMIN = 10;
 
+    public static $roles = [
+        0 => 'Юзер',
+        10 => 'Администратор'
+    ];
+
 
     /**
      * @inheritdoc

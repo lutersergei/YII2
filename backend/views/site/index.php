@@ -4,50 +4,177 @@
 
 $this->title = 'My Yii Application';
 ?>
-<div class="site-index">
+<div class="main-box clearfix">
+    <header class="main-box-header clearfix">
+        <h2>Начальная страница</h2>
+    </header>
 
-    <div class="jumbotron">
-        <h1>Congratulations!</h1>
-
-        <p class="lead">You have successfully created your Yii-powered application.</p>
-
-        <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p>
-    </div>
-
-    <div class="body-content">
-
+    <div class="main-box-body clearfix">
         <div class="row">
-            <div class="col-lg-4">
-                <h2>Heading</h2>
+            <div class="col-lg-12">
+<!--                <button type="button" class="btn btn-default">Default</button>-->
+<!---->
+<!--                <button type="button" class="btn btn-primary">Primary</button>-->
+<!---->
+<!--                <button type="button" class="btn btn-success">Success</button>-->
+<!---->
+<!--                <button type="button" class="btn btn-info">Info</button>-->
+<!---->
+<!--                <button type="button" class="btn btn-warning">Warning</button>-->
+<!---->
+<!--                <button type="button" class="btn btn-danger">Danger</button>-->
+<!---->
+<!--                <button type="button" class="btn btn-link">Link</button>-->
+<!---->
+<!--                <br><br>-->
+<!---->
+<!--                <div class="btn-group">-->
+<!--                    <button type="button" class="btn btn-default">Left</button>-->
+<!--                    <button type="button" class="btn btn-default">Middle</button>-->
+<!--                    <button type="button" class="btn btn-default">Right</button>-->
+<!--                </div>-->
+<!---->
+<!--                <br><br>-->
+<!---->
+<!--                <div class="btn-group">-->
+<!--                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">-->
+<!--                        Action <span class="caret"></span>-->
+<!--                    </button>-->
+<!--                    <ul class="dropdown-menu" role="menu">-->
+<!--                        <li><a href="#">Action</a></li>-->
+<!--                        <li><a href="#">Another action</a></li>-->
+<!--                        <li><a href="#">Something else here</a></li>-->
+<!--                        <li class="divider"></li>-->
+<!--                        <li><a href="#">Separated link</a></li>-->
+<!--                    </ul>-->
+<!--                </div>-->
+<!---->
+<!--                <div class="btn-group">-->
+<!--                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">-->
+<!--                        Action <span class="caret"></span>-->
+<!--                    </button>-->
+<!--                    <ul class="dropdown-menu" role="menu">-->
+<!--                        <li><a href="#">Action</a></li>-->
+<!--                        <li><a href="#">Another action</a></li>-->
+<!--                        <li><a href="#">Something else here</a></li>-->
+<!--                        <li class="divider"></li>-->
+<!--                        <li><a href="#">Separated link</a></li>-->
+<!--                    </ul>-->
+<!--                </div>-->
+<!---->
+<!--                <div class="btn-group">-->
+<!--                    <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">-->
+<!--                        Action <span class="caret"></span>-->
+<!--                    </button>-->
+<!--                    <ul class="dropdown-menu" role="menu">-->
+<!--                        <li><a href="#">Action</a></li>-->
+<!--                        <li><a href="#">Another action</a></li>-->
+<!--                        <li><a href="#">Something else here</a></li>-->
+<!--                        <li class="divider"></li>-->
+<!--                        <li><a href="#">Separated link</a></li>-->
+<!--                    </ul>-->
+<!--                </div>-->
+<!---->
+<!--                <div class="btn-group">-->
+<!--                    <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">-->
+<!--                        Action <span class="caret"></span>-->
+<!--                    </button>-->
+<!--                    <ul class="dropdown-menu" role="menu">-->
+<!--                        <li><a href="#">Action</a></li>-->
+<!--                        <li><a href="#">Another action</a></li>-->
+<!--                        <li><a href="#">Something else here</a></li>-->
+<!--                        <li class="divider"></li>-->
+<!--                        <li><a href="#">Separated link</a></li>-->
+<!--                    </ul>-->
+<!--                </div>-->
+<!---->
+<!--                <br><br>-->
+<!---->
+<!--                <div class="btn-group">-->
+<!--                    <button type="button" class="btn btn-default">Action</button>-->
+<!--                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">-->
+<!--                        <span class="caret"></span>-->
+<!--                    </button>-->
+<!--                    <ul class="dropdown-menu" role="menu">-->
+<!--                        <li><a href="#">Action</a></li>-->
+<!--                        <li><a href="#">Another action</a></li>-->
+<!--                        <li><a href="#">Something else here</a></li>-->
+<!--                        <li class="divider"></li>-->
+<!--                        <li><a href="#">Separated link</a></li>-->
+<!--                    </ul>-->
+<!--                </div>-->
+<!---->
+<!--                <div class="btn-group">-->
+<!--                    <button type="button" class="btn btn-primary">Action</button>-->
+<!--                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">-->
+<!--                        <span class="caret"></span>-->
+<!--                    </button>-->
+<!--                    <ul class="dropdown-menu" role="menu">-->
+<!--                        <li><a href="#">Action</a></li>-->
+<!--                        <li><a href="#">Another action</a></li>-->
+<!--                        <li><a href="#">Something else here</a></li>-->
+<!--                        <li class="divider"></li>-->
+<!--                        <li><a href="#">Separated link</a></li>-->
+<!--                    </ul>-->
+<!--                </div>-->
+<!---->
+<!--                <div class="btn-group">-->
+<!--                    <button type="button" class="btn btn-success">Action</button>-->
+<!--                    <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">-->
+<!--                        <span class="caret"></span>-->
+<!--                    </button>-->
+<!--                    <ul class="dropdown-menu" role="menu">-->
+<!--                        <li><a href="#">Action</a></li>-->
+<!--                        <li><a href="#">Another action</a></li>-->
+<!--                        <li><a href="#">Something else here</a></li>-->
+<!--                        <li class="divider"></li>-->
+<!--                        <li><a href="#">Separated link</a></li>-->
+<!--                    </ul>-->
+<!--                </div>-->
+<!---->
+<!--                <div class="btn-group">-->
+<!--                    <button type="button" class="btn btn-danger">Action</button>-->
+<!--                    <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">-->
+<!--                        <span class="caret"></span>-->
+<!--                    </button>-->
+<!--                    <ul class="dropdown-menu" role="menu">-->
+<!--                        <li><a href="#">Action</a></li>-->
+<!--                        <li><a href="#">Another action</a></li>-->
+<!--                        <li><a href="#">Something else here</a></li>-->
+<!--                        <li class="divider"></li>-->
+<!--                        <li><a href="#">Separated link</a></li>-->
+<!--                    </ul>-->
+<!--                </div>-->
+<!---->
+<!--                <div class="btn-group">-->
+<!--                    <button type="button" class="btn btn-info"><i class="fa fa-cloud-download"></i></button>-->
+<!--                    <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">-->
+<!--                        <span class="caret"></span>-->
+<!--                    </button>-->
+<!--                    <ul class="dropdown-menu" role="menu">-->
+<!--                        <li><a href="#">Action</a></li>-->
+<!--                        <li><a href="#">Another action</a></li>-->
+<!--                        <li><a href="#">Something else here</a></li>-->
+<!--                        <li class="divider"></li>-->
+<!--                        <li><a href="#">Separated link</a></li>-->
+<!--                    </ul>-->
+<!--                </div>-->
+<!---->
+<!--                <br><br>-->
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
+                <a href="/site/users" type="button" class="btn btn-primary btn-lg">
+                    <span class="fa fa-users"></span> Пользователи
+                </a>
 
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/doc/">Yii Documentation &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
+<!--                <button type="button" class="btn btn-success btn-lg">-->
+<!--                    <span class="fa fa-heart"></span> Icon button-->
+<!--                </button>-->
+<!---->
+<!--                <button type="button" data-loading-text="Loading..." class="btn btn-primary btn-lg" id="btn-loading-demo">-->
+<!--                    Loading button-->
+<!--                </button>-->
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/forum/">Yii Forum &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
             </div>
         </div>
-
     </div>
 </div>

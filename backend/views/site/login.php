@@ -15,7 +15,7 @@ $this->title = 'Login';
         <div class="col-xs-12">
             <header id="login-header">
                 <div id="login-logo">
-                    <img src="img/logo.png" alt=""/>
+                    <img src="/img/logo.png" alt=""/>
                 </div>
             </header>
             <div id="login-box-inner">

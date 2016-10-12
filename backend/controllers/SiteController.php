@@ -1,14 +1,14 @@
 <?php
 namespace backend\controllers;
 
+use backend\models\UsersForm;
 use common\models\Tweets;
 use Yii;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use backend\models\LoginForm;
-use yii\web\User;
-
+use common\models\User;
 /**
  * Site controller
  */
@@ -30,7 +30,7 @@ class SiteController extends Controller
                         'allow' => true,
                     ],
                     [
-                        'actions' => ['logout', 'index', 'tweet-timestamp', 'new-tweet'],
+                        'actions' => ['logout', 'index', 'tweet-timestamp', 'new-tweet', 'users', 'user-delete'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -155,5 +155,51 @@ class SiteController extends Controller
 
         return $this->goHome();
 
+    }
+
+    public function actionUsers()
+    {
+        $users = User::find()->all();
+        $roles = User::$roles;
+        $message = null;
+
+        return $this->render('users', [
+            'users' => $users,
+            'roles' => $roles,
+            'message' => $message,
+        ]);
+    }
+
+    public function actionUserDelete()
+    {
+        $users = User::find()->all();
+        $roles = User::$roles;
+        $message = null;
+        $id = (int)Yii::$app->request->get('id');
+
+        if ($id && User::findIdentity($id))
+        {
+            $user = User::find()->where(['id' => $id])->one();
+            $user_role = $user->role;
+            $current_user_id = Yii::$app->user->id;
+            if ($user_role === User::ROLE_USER)
+            {
+                if ($id !== $current_user_id)
+                {
+                    $user->delete();
+                    $this->refresh();
+                }
+                else
+                {
+                    $message = 'Невозможно удалить текущего пользователя';
+                }
+            }
+            else $message = 'Невозможно удалить админстратора';
+        }
+        return $this->render('users', [
+            'users' => $users,
+            'roles' => $roles,
+            'message' => $message,
+        ]);
     }
 }

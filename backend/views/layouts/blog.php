@@ -26,10 +26,10 @@ BlogAsset::register($this);
 <div id="theme-wrapper">
     <header class="navbar" id="header-navbar">
         <div class="container">
-            <a href="index.html" id="logo" class="navbar-brand">
-                <img src="img/logo.png" alt="" class="normal-logo logo-white"/>
-                <img src="img/logo-black.png" alt="" class="normal-logo logo-black"/>
-                <img src="img/logo-small.png" alt="" class="small-logo hidden-xs hidden-sm hidden"/>
+            <a href="/" id="logo" class="navbar-brand">
+                <img src="/img/logo.png" alt="" class="normal-logo logo-white"/>
+                <img src="/img/logo-black.png" alt="" class="normal-logo logo-black"/>
+                <img src="/img/logo-small.png" alt="" class="small-logo hidden-xs hidden-sm hidden"/>
             </a>
 
             <div class="clearfix">
@@ -112,7 +112,7 @@ BlogAsset::register($this);
                                 </li>
                                 <li class="item first-item">
                                     <a href="#">
-                                        <img src="img/samples/messages-photo-1.png" alt=""/>
+                                        <img src="/img/samples/messages-photo-1.png" alt=""/>
                                         <span class="content">
 											<span class="content-headline">
 												George Clooney
@@ -127,7 +127,7 @@ BlogAsset::register($this);
                                 </li>
                                 <li class="item">
                                     <a href="#">
-                                        <img src="img/samples/messages-photo-2.png" alt=""/>
+                                        <img src="/img/samples/messages-photo-2.png" alt=""/>
                                         <span class="content">
 											<span class="content-headline">
 												Emma Watson
@@ -142,7 +142,7 @@ BlogAsset::register($this);
                                 </li>
                                 <li class="item">
                                     <a href="#">
-                                        <img src="img/samples/messages-photo-3.png" alt=""/>
+                                        <img src="/img/samples/messages-photo-3.png" alt=""/>
                                         <span class="content">
 											<span class="content-headline">
 												Robert Downey Jr.
@@ -238,7 +238,7 @@ BlogAsset::register($this);
                         </li>
                         <li class="dropdown profile-dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <img src="img/samples/scarlet-159.png" alt=""/>
+                                <img src="/img/samples/scarlet-159.png" alt=""/>
                                 <span class="hidden-xs">Scarlett Johansson</span> <b class="caret"></b>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-right">
@@ -273,11 +273,11 @@ BlogAsset::register($this);
                 <section id="col-left" class="col-left-nano">
                     <div id="col-left-inner" class="col-left-nano-content">
                         <div id="user-left-box" class="clearfix hidden-sm hidden-xs dropdown profile2-dropdown">
-                            <img alt="" src="img/samples/scarlet-159.png" />
+                            <img alt="" src="/img/samples/scarlet-159.png" />
                             <div class="user-box">
 									<span class="name">
 										<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-											Scarlett J.
+											<?= Yii::$app->user->identity->username ?>
 											<i class="fa fa-angle-down"></i>
 										</a>
 										<ul class="dropdown-menu">
@@ -305,13 +305,13 @@ BlogAsset::register($this);
                                     </a>
                                     <ul class="submenu">
                                         <li>
-                                            <a href="/index.php?r=site/new-tweet">
+                                            <a href="/site/new-tweet">
                                                 <i class="fa  fa-comment-o"></i>
                                                 <span>Text</span>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/index.php?r=site/tweet-timestamp">
+                                            <a href="/site/tweet-timestamp">
                                                 <i class="fa fa-clock-o"></i>
                                                 <span>Timestamp</span>
                                             </a>
