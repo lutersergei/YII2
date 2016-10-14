@@ -12,7 +12,8 @@ class SignupForm extends Model
     public $username;
     public $email;
     public $password;
-
+    public $firstname;
+    public $lastname;
 
     /**
      * @inheritdoc
@@ -33,15 +34,20 @@ class SignupForm extends Model
 
             ['password', 'required'],
             ['password', 'string', 'min' => 6],
+
+            ['firstname', 'required'],
+            ['lastname', 'required'],
         ];
     }
 
     public function attributeLabels()
     {
         return [
-            'username' => 'Имя пользователя',
+            'username' => 'Логин',
             'email' => 'Email',
             'password' => 'Пароль',
+            'firstname' => 'Имя',
+            'lastname' => 'Фамилия'
         ];
     }
 
@@ -59,6 +65,8 @@ class SignupForm extends Model
         $user = new User();
         $user->username = $this->username;
         $user->email = $this->email;
+        $user->firstname = $this->firstname;
+        $user->lastname = $this->lastname;
         $user->setPassword($this->password);
         $user->generateAuthKey();
         

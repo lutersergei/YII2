@@ -6,7 +6,7 @@
 $this->title = 'ТвиттоГрамм';
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
-use common\models\User;
+use yii\helpers\Url;
 use common\models\Tweets;
 ?>
 <div class="row">
@@ -86,9 +86,9 @@ HTML;
                         <div class="panel-body">
                             <div class="blog-post-meta">
                                 <span class="label label-light label-primary">Теги</span>
-                                <p class="blog-post-date pull-right">Автор: <?php
-                                    echo $tweet->user->username;
-                                    ?></p>
+                                <p class="blog-post-date pull-right">Автор:
+                                    <a href="<?= Url::to(['user/profile','id' => $tweet->user->id]) ?>"><?= $tweet->user->username ?></a>
+                                    </p>
                             </div>
                             <div class="blog-post-content">
                                 <?= $text_html ?>

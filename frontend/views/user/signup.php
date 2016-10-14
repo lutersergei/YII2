@@ -31,13 +31,19 @@ $this->title = 'Регистрация нового пользователя';
                 ],
             ]); ?>
 
-                <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
 
-                <?= $form->field($model, 'email') ?>
+            <?= $form->field($model, 'firstname')->textInput(['autofocus' => true]) ?>
 
-                <?= $form->field($model, 'password')->passwordInput() ?>
+            <?= $form->field($model, 'lastname')->textInput() ?>
 
-                <div class="col-sm-offset-4">
+            <?= $form->field($model, 'username')->textInput() ?>
+
+            <?= $form->field($model, 'password')->passwordInput() ?>
+
+            <?= $form->field($model, 'email') ?>
+
+
+            <div class="col-sm-offset-4">
                     <?= Html::submitButton('Зарегистрироваться', ['class' => 'btn btn-primary btn-raised', 'name' => 'signup-button']) ?>
                 </div>
 

@@ -2,6 +2,7 @@
 namespace frontend\controllers;
 
 use common\models\PictureUpload;
+use common\models\User;
 use frontend\models\PublishForm;
 use Yii;
 use yii\web\Controller;
@@ -135,6 +136,29 @@ class UserController extends Controller
         return $this->render('feed', [
             'tweets' => $tweets,
             'publishForm' => $publishForm,
+        ]);
+    }
+
+    public function actionProfile()
+    {
+        $this->layout = 'profile.php';
+        $get = Yii::$app->request->get();
+
+        if (isset($get['id']))
+        {
+            $id = (int)$get['id'];
+            $user = User::find()->where(['id' => $id])->one();
+            $tweets = Tweets::getFeedQuery($id)->all();
+        }
+        else
+        {
+            $user = Yii::$app->user->identity;
+            $tweets = Tweets::getFeedQuery()->all();
+        }
+
+        return $this->render('profile', [
+            'user' => $user,
+            'tweets' => $tweets,
         ]);
     }
 }

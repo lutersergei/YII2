@@ -58,13 +58,13 @@ BlogAsset::register($this);
                 ?>
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="<?= Url::to(['#']) ?>">
-                            <?= Yii::$app->user->identity->username?>
+                            <?= Yii::$app->user->identity->lastname . ' ' . Yii::$app->user->identity->firstname?>
                             <b class="caret"></b>
                             <div class="ripple-container"></div>
                         </a>
                         <ul class="dropdown-menu">
                             <li><a href="<?= Url::to(['/user/feed']) ?>"><i class="fa fa-th-list"></i> Мои ИнстаТвитты</a></li>
-                            <li><a href="user-profile.html"><i class="fa fa-user"></i> Профиль</a></li>
+                            <li><a href="<?= Url::to(['/user/profile']) ?>"><i class="fa fa-user"></i> Профиль</a></li>
                             <li><a href="<?= Url::to(['/user/logout']) ?>"><i class="fa fa-power-off"></i> Выйти</a></li>
                         </ul>
                     </li>

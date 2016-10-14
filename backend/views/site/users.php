@@ -35,17 +35,7 @@ use yii\helpers\Url;
                                 <td>
                                     <img src="/img/samples/scarlet-159.png" alt="">
                                     <a href="#" class="user-link"><?= $user->username ?></a>
-                                    <span class="user-subhead"><?php
-                                        //Не уверен что такой способ оптимальный
-                                        foreach ($roles as $k => $v)
-                                        {
-                                            if ($k === $user->role)
-                                            {
-                                                echo $v;
-                                                break;
-                                            }
-                                        }
-                                        ?></span>
+                                    <span class="user-subhead"><?= User::$roles[$user->role] ?></span>
                                 </td>
                                 <td>
                                     <?php

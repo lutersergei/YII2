@@ -33,7 +33,7 @@ class User extends ActiveRecord implements IdentityInterface
     const ROLE_ADMIN = 10;
 
     public static $roles = [
-        0 => 'Юзер',
+        0 => 'Пользователь',
         10 => 'Администратор'
     ];
 
