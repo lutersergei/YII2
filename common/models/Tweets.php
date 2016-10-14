@@ -105,6 +105,15 @@ class Tweets extends \yii\db\ActiveRecord
             return null;
         }
         return null;
+    }
 
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public static function getFeedQuery()
+    {
+        $query = self::find()->leftJoin(User::tableName(), self::tableName() . '.user_id =' . User::tableName() . '.id')->where(['user_id' => Yii::$app->user->id])->with('user');
+
+        return $query;
     }
 }

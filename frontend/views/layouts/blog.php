@@ -5,6 +5,7 @@
 
 use frontend\assets\BlogAsset;
 use yii\helpers\Html;
+use yii\helpers\Url;
 
 BlogAsset::register($this);
 ?>
@@ -19,7 +20,7 @@ BlogAsset::register($this);
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?= Html::csrfMetaTags() ?>
 
-    <title>Твиттограмм</title>
+    <title><?= Html::encode($this->title) ?></title>
 
     <?php $this->head() ?>
 
@@ -45,17 +46,28 @@ BlogAsset::register($this);
         <div class="navbar-collapse collapse navbar-responsive-collapse">
             <ul class="nav navbar-nav">
 
-                <li><a href="/blog/about">About</a></li>
-                <li><a href="/blog/contact">Contact</a></li>
+                <li><a href="<?= Url::to(['/blog/about']) ?>">О сайте</a></li>
+                <li><a href="<?= Url::to(['/blog/contact']) ?>">Контакты</a></li>
                 <?php
                 if (Yii::$app->user->isGuest):
                 ?>
-                    <li><a href="/blog/signup">Регистрация</a></li>
-                    <li><a href="/blog/login">Войти</a></li>
+                    <li><a href="<?= Url::to(['/user/signup']) ?>">Регистрация</a></li>
+                    <li><a href="<?= Url::to(['/user/login']) ?>">Войти</a></li>
                 <?php
                 else:
                 ?>
-                    <li><a href="/blog/logout">Выйти(<?= Yii::$app->user->identity->username?>)</a></li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="<?= Url::to(['#']) ?>">
+                            <?= Yii::$app->user->identity->username?>
+                            <b class="caret"></b>
+                            <div class="ripple-container"></div>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="<?= Url::to(['/user/feed']) ?>"><i class="fa fa-th-list"></i> Мои ИнстаТвитты</a></li>
+                            <li><a href="user-profile.html"><i class="fa fa-user"></i> Профиль</a></li>
+                            <li><a href="<?= Url::to(['/user/logout']) ?>"><i class="fa fa-power-off"></i> Выйти</a></li>
+                        </ul>
+                    </li>
                 <?php
                 endif;
                 ?>

@@ -3,7 +3,7 @@
 /* @var $this yii\web\View */
 /* @var $tweet \common\models\Tweets  */
 
-$this->title = 'Твиттограмм';
+$this->title = 'Твитт ' . $tweet->id;
 ?>
 <div class="row">
     <div class="col-sm-12">
