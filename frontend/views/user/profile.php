@@ -8,12 +8,13 @@ use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 use common\models\User;
 use common\models\Tweets;
+use yii\helpers\Url;
 ?>
 <div class="row" id="user-profile">
     <div class="col-lg-3 col-md-4 col-sm-4">
         <div class="main-box clearfix">
             <header class="main-box-header clearfix">
-                <h2><?= $user['lastname'] . ' ' . $user['firstname'] ?></h2>
+                <h2><?= $user->lastname . ' ' . $user->firstname ?></h2>
             </header>
 
             <div class="main-box-body clearfix">
@@ -40,7 +41,7 @@ use common\models\Tweets;
                     Зарегистрирован:
                     <?php
                     $date = new DateTime();
-                    $date->setTimestamp($user['created_at']);
+                    $date->setTimestamp($user->created_at);
                     echo $date->format('Y/m/d');
                     ?>
                 </div>
@@ -54,9 +55,9 @@ use common\models\Tweets;
                 </div>
 
                 <div class="profile-message-btn center-block text-center">
-                    <a href="#" class="btn btn-success">
-                        <i class="fa fa-envelope"></i>
-                        Отправить
+                    <a href="<?= Url::to(['user/subscribe', 'id' => $user->id]) ?>" class="btn btn-success">
+                        <i class="fa fa-plus-circle"></i>
+                        Подписаться
                     </a>
                 </div>
             </div>

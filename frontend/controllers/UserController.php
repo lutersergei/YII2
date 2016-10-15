@@ -12,6 +12,7 @@ use common\models\Tweets;
 use frontend\models\SignupForm;
 use common\models\LoginForm;
 use yii\web\UploadedFile;
+use common\models\Subscription;
 
 /**
  * User controller
@@ -163,5 +164,24 @@ class UserController extends Controller
             'tweets' => $tweets,
             'countTweets' => $countTweets
         ]);
+    }
+
+    public function actionSubscribe()
+    {
+        $get = Yii::$app->request->get();
+
+        if (isset($get['id']))
+        {
+            $id = (int)$get['id'];
+            if (Subscription::newSubscribe($id))
+            {
+                $this->refresh();
+            }
+            //TODO научиться выдавать ошибку
+            else
+            {
+
+            }
+        }
     }
 }
