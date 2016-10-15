@@ -57,14 +57,23 @@ class Subscription extends \yii\db\ActiveRecord
 
     public static function newSubscribe($id)
     {
-        //TODO проверка на подписки в данный момент, запрет на подписку самого себя
         $subs_user = User::find()->where(['id' => $id])->one();
         if ($subs_user)
         {
-            $subscribe = new Subscription();
-            $subscribe->user_id = Yii::$app->user->id;
-            $subscribe->subscription = $id;
-            return $subscribe->save() ? $subscribe : null;
+            //disable subscription itself
+            if ($id !== Yii::$app->user->id)
+            {
+                //Check for already subscribe
+                if (!Subscription::find()->where(['user_id' => Yii::$app->user->id])->andWhere(['subscription' => $id])->one())
+                {
+                    $subscribe = new Subscription();
+                    $subscribe->user_id = Yii::$app->user->id;
+                    $subscribe->subscription = $id;
+                    return $subscribe->save() ? $subscribe : null;
+                }
+                else return null;
+            }
+            else return null;
         }
         else return null;
     }

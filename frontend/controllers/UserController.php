@@ -5,6 +5,7 @@ use common\models\PictureUpload;
 use common\models\User;
 use frontend\models\PublishForm;
 use Yii;
+use yii\helpers\Url;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
@@ -169,18 +170,17 @@ class UserController extends Controller
     public function actionSubscribe()
     {
         $get = Yii::$app->request->get();
-
         if (isset($get['id']))
         {
             $id = (int)$get['id'];
             if (Subscription::newSubscribe($id))
             {
-                $this->refresh();
+                $this->redirect(Url::to(['user/profile', 'id' => $id]));
             }
             //TODO научиться выдавать ошибку
             else
             {
-
+                $this->redirect(Url::to(['user/profile', 'id' => $id]));
             }
         }
     }
