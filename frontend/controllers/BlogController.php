@@ -62,7 +62,7 @@ class BlogController extends Controller
      */
     public function actionIndex()
     {
-        $tweets = Tweets::find()->with('user')->all();
+        $tweets = Tweets::find()->orderBy(['create_at' => SORT_DESC])->with('user')->all();
 
         $publishForm = new PublishForm();
         $post = Yii::$app->request->post('PublishForm');

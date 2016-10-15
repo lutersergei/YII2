@@ -116,7 +116,7 @@ class UserController extends Controller
      */
     public function actionFeed()
     {
-        $tweets = Tweets::getFeedQuery()->all();
+        $tweets = Tweets::getFeedQuery()->orderBy(['create_at' => SORT_DESC])->all();
 
         $publishForm = new PublishForm();
         $post = Yii::$app->request->post('PublishForm');

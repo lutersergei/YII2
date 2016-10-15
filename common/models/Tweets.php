@@ -116,7 +116,7 @@ class Tweets extends \yii\db\ActiveRecord
         {
             $id = Yii::$app->user->id;
         }
-        $query = self::find()->leftJoin(User::tableName(), self::tableName() . '.user_id =' . User::tableName() . '.id')->where(['user_id' => $id])->with('user');
+        $query = self::find()->leftJoin(User::tableName(), self::tableName() . '.user_id =' . User::tableName() . '.id')->where(['user_id' => $id])->orderBy(['create_at' => SORT_DESC])->with('user');
 
         return $query;
     }
