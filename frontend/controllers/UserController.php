@@ -148,17 +148,20 @@ class UserController extends Controller
         {
             $id = (int)$get['id'];
             $user = User::find()->where(['id' => $id])->one();
-            $tweets = Tweets::getFeedQuery($id)->all();
+            $tweetsQuery = Tweets::getFeedQuery($id);
         }
         else
         {
             $user = Yii::$app->user->identity;
-            $tweets = Tweets::getFeedQuery()->all();
+            $tweetsQuery = Tweets::getFeedQuery();
         }
+        $tweets = $tweetsQuery->all();
+        $countTweets = $tweetsQuery->count();
 
         return $this->render('profile', [
             'user' => $user,
             'tweets' => $tweets,
+            'countTweets' => $countTweets
         ]);
     }
 }

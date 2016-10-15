@@ -35,7 +35,7 @@ use common\models\Tweets;
                                             ],
                                         ],
                                     ]);
-                                    echo $form->field($publishForm, 'text')->textarea(['rows' => 5])->label('Текст');
+                                    echo $form->field($publishForm, 'text')->textarea(['autofocus' => true, 'rows' => 5])->label('Текст');
                                     echo $form->field($publishForm, 'image')->fileInput();
                                     ?>
                                     <div class="form-group">

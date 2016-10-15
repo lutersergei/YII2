@@ -1,6 +1,7 @@
 <?php
 /* @var $this yii\web\View */
 /* @var $user User  */
+/* @var $countTweets string*/
 
 $this->title = 'Профиль пользователя';
 use yii\helpers\Html;
@@ -47,7 +48,7 @@ use common\models\Tweets;
                 <div class="profile-details">
                     <ul class="fa-ul">
 <!--                        <li><i class="fa-li fa fa-truck"></i>Orders: <span>456</span></li>-->
-                        <li><i class="fa-li fa fa-comment"></i>ИнстаТвиттов: <span>кол-во</span></li>
+                        <li><i class="fa-li fa fa-comment"></i>ИнстаТвиттов: <span><?= $countTweets ?></span></li>
 <!--                        <li><i class="fa-li fa fa-tasks"></i>Tasks done: <span>1024</span></li>-->
                     </ul>
                 </div>
