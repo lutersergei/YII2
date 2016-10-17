@@ -85,10 +85,8 @@ HTML;
                         <?= $image_html ?>
                         <div class="panel-body">
                             <div class="blog-post-meta">
-                                <span class="label label-light label-primary">Теги</span>
-                                <p class="blog-post-date pull-right">Автор:
-                                    <a href="<?= Url::to(['user/profile','id' => $tweet->user->id]) ?>"><?= $tweet->user->username ?></a>
-                                    </p>
+                                <strong><a class="text-info" href="<?= Url::to(['user/profile','id' => $tweet->user->id]) ?>"><?= $tweet->user->lastname . ' ' . $tweet->user->firstname ?></a></strong>
+                                <p class="pull-right"> <?= $tweet->create_at ?></p>
                             </div>
                             <div class="blog-post-content">
                                 <?= $text_html ?>

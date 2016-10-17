@@ -118,7 +118,7 @@ class UserController extends Controller
      */
     public function actionFeed()
     {
-        $tweets = Tweets::getFeedQuery()->orderBy(['create_at' => SORT_DESC])->all();
+        $tweets = Tweets::getFeedQueryWithSubs()->all();
 
         $publishForm = new PublishForm();
         $post = Yii::$app->request->post('PublishForm');
@@ -145,25 +145,31 @@ class UserController extends Controller
     {
         $this->layout = 'profile.php';
         $get = Yii::$app->request->get();
-
+        $isSubscribed = false;
         if (isset($get['id']))
         {
             $id = (int)$get['id'];
             $user = User::find()->where(['id' => $id])->one();
             $tweetsQuery = Tweets::getFeedQuery($id);
+            $isSubscribed = Subscription::isSubscribed($id);
         }
         else
         {
+            $id = Yii::$app->user->id;
             $user = Yii::$app->user->identity;
             $tweetsQuery = Tweets::getFeedQuery();
         }
+
+        $friends = Subscription::getFriends($id);
         $tweets = $tweetsQuery->all();
         $countTweets = $tweetsQuery->count();
 
         return $this->render('profile', [
             'user' => $user,
             'tweets' => $tweets,
-            'countTweets' => $countTweets
+            'countTweets' => $countTweets,
+            'friends' => $friends,
+            'isSubscribed' => $isSubscribed
         ]);
     }
 
@@ -174,6 +180,24 @@ class UserController extends Controller
         {
             $id = (int)$get['id'];
             if (Subscription::newSubscribe($id))
+            {
+                $this->redirect(Url::to(['user/profile', 'id' => $id]));
+            }
+            //TODO научиться выдавать ошибку
+            else
+            {
+                $this->redirect(Url::to(['user/profile', 'id' => $id]));
+            }
+        }
+    }
+
+    public function actionUnsubscribe()
+    {
+        $get = Yii::$app->request->get();
+        if (isset($get['id']))
+        {
+            $id = (int)$get['id'];
+            if (Subscription::unsubscribe($id))
             {
                 $this->redirect(Url::to(['user/profile', 'id' => $id]));
             }

@@ -108,6 +108,7 @@ class Tweets extends \yii\db\ActiveRecord
     }
 
     /**
+     * @param null $id
      * @return \yii\db\ActiveQuery
      */
     public static function getFeedQuery($id = null)
@@ -117,6 +118,23 @@ class Tweets extends \yii\db\ActiveRecord
             $id = Yii::$app->user->id;
         }
         $query = self::find()->leftJoin(User::tableName(), self::tableName() . '.user_id =' . User::tableName() . '.id')->where(['user_id' => $id])->orderBy(['create_at' => SORT_DESC])->with('user');
+
+        return $query;
+    }
+
+    /**
+     * @param null $id
+     * @return \yii\db\ActiveQuery
+     */
+    public static function getFeedQueryWithSubs($id = null)
+    {
+        if ($id === null)
+        {
+            $id = Yii::$app->user->id;
+        }
+        $subscription = Subscription::getArraySubscription($id);
+        array_push($subscription, $id);
+        $query = self::find()->leftJoin(User::tableName(), self::tableName() . '.user_id =' . User::tableName() . '.id')->where(['user_id' => $subscription])->orderBy(['create_at' => SORT_DESC])->with('user');
 
         return $query;
     }

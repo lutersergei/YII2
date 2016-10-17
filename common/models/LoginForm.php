@@ -34,7 +34,7 @@ class LoginForm extends Model
     public function attributeLabels()
     {
         return [
-            'username' => 'Имя пользователя',
+            'username' => 'Логин',
             'password' => 'Пароль',
         ];
     }

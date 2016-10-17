@@ -63,7 +63,7 @@ BlogAsset::register($this);
                                 <div class="ripple-container"></div>
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a href="<?= Url::to(['/user/feed']) ?>"><i class="fa fa-th-list"></i> Мои ИнстаТвитты</a></li>
+                                <li><a href="<?= Url::to(['/user/feed']) ?>"><i class="fa fa-th-list"></i> Моя лента</a></li>
                                 <li><a href="<?= Url::to(['/user/profile']) ?>"><i class="fa fa-user"></i> Профиль</a></li>
                                 <li><a href="<?= Url::to(['/user/logout']) ?>"><i class="fa fa-power-off"></i> Выйти</a></li>
                             </ul>
