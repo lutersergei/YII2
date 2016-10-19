@@ -86,7 +86,7 @@ HTML;
                         <?= $image_html ?>
                         <div class="panel-body">
                             <div class="blog-post-meta">
-                                <strong><a class="text-info" href="<?= Url::to(['user/profile','id' => $tweet->user->id]) ?>"><?= $tweet->user->lastname . ' ' . $tweet->user->firstname ?></a></strong>
+                                <strong><a class="text-info" href="<?= Url::to(['user/profile','id' => $tweet->user->id]) ?>"><?= Html::encode($tweet->user->lastname) . ' ' . Html::encode($tweet->user->firstname) ?></a></strong>
                                 <p class="pull-right"> <?= $tweet->create_at ?></p>
                             </div>
                             <div class="blog-post-content">

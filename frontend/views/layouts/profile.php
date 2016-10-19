@@ -58,7 +58,7 @@ BlogAsset::register($this);
                         ?>
                         <li class="dropdown">
                             <a class="dropdown-toggle" data-toggle="dropdown" href="<?= Url::to(['#']) ?>">
-                                <?= Yii::$app->user->identity->lastname . ' ' . Yii::$app->user->identity->firstname?>
+                                <?= Html::encode(Yii::$app->user->identity->lastname) . ' ' . Html::encode(Yii::$app->user->identity->firstname)?>
                                 <b class="caret"></b>
                                 <div class="ripple-container"></div>
                             </a>
