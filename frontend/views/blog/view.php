@@ -16,7 +16,7 @@ $this->title = 'Твитт ' . $tweet->id;
                         <p class="blog-post-date pull-right">Дата</p>
                     </div>
                     <div class="blog-post-content">
-                        <h2 class="blog-post-title"><?= $tweet->text ?></h2>
+                        <h2 class="blog-post-title"><?= \yii\bootstrap\Html::encode($tweet->text) ?></h2>
                     </div>
                 </div>
             </div>

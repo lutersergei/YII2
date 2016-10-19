@@ -73,8 +73,9 @@ use common\models\Tweets;
 HTML;
             }
             if (($tweet_content->mode === Tweets::MODE_BOTH) || ($tweet_content->mode === Tweets::MODE_TEXT)) {
+                $text_encode = Html::encode($tweet_content->text);
                 $text_html = <<<HTML
-<p>{$tweet_content->text}</p>
+<p>{$text_encode}</p>
 HTML;
             }
 
