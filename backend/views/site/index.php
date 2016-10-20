@@ -1,7 +1,7 @@
 <?php
 
 /* @var $this yii\web\View */
-
+use yii\helpers\Url;
 $this->title = 'My Yii Application';
 ?>
 <div class="main-box clearfix">
@@ -162,11 +162,11 @@ $this->title = 'My Yii Application';
 <!---->
 <!--                <br><br>-->
 
-                <a href="/site/users" type="button" class="btn btn-primary btn-lg">
+                <a href="<?= Url::to(['site/users'  ]) ?>" type="button" class="btn btn-primary btn-lg">
                     <span class="fa fa-users"></span> Пользователи
                 </a>
 
-                <a href="/site/feed" type="button" class="btn btn-primary btn-lg">
+                <a href="<?= Url::to(['site/feed']) ?>" type="button" class="btn btn-primary btn-lg">
                     <span class="fa fa-th-list"></span> Твиты
                 </a>
 

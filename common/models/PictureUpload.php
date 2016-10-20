@@ -16,9 +16,10 @@ class PictureUpload extends Model
         }
         return self::$image_dir;
     }
+
     /**
      * @param $picture UploadedFile
-     * @return bool result of upload
+     * @return null|string
      */
 
     public static function uploadImage($picture)
