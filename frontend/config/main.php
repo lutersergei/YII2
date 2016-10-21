@@ -42,13 +42,11 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-                'view/<id:\d+>' => 'blog/view',
-                'profile/<id:\d+>' => 'user/profile',
-                'about' => 'blog/about',
-                'contact' => 'blog/contact',
-                'page/<slug:[\w\-]+>' => 'page/default/index',
-                '<action:\w+>' => 'user/<action>',
-
+                '<action:view>/<id:\d+>' => 'blog/<action>',
+                '<action:about|contact>' => 'blog/<action>',
+                '<action:profile|subscribe|unsubscribe>/<id:\d+>' => 'user/<action>',
+                '<action:profile|signup|login|logout|feed>' => 'user/<action>',
+                '<slug:[\w\-]+>' => 'page/default/index',
             ],
         ],
 

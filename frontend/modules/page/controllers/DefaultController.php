@@ -33,7 +33,7 @@ class DefaultController extends Controller
         }
         else
         {
-            throw new NotFoundHttpException();
+            throw new NotFoundHttpException('Страница не найдена');
         }
 
     }

@@ -7,11 +7,11 @@ use frontend\models\PublishForm;
 use Yii;
 use yii\helpers\Url;
 use yii\web\Controller;
-use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use common\models\Tweets;
 use frontend\models\SignupForm;
 use common\models\LoginForm;
+use yii\web\NotFoundHttpException;
 use yii\web\UploadedFile;
 use common\models\Subscription;
 
@@ -141,6 +141,12 @@ class UserController extends Controller
         ]);
     }
 
+    /**
+     * View User profile
+     *
+     * @return string
+     * @throws NotFoundHttpException
+     */
     public function actionProfile()
     {
         $this->layout = 'profile.php';
@@ -150,6 +156,10 @@ class UserController extends Controller
         {
             $id = (int)$get['id'];
             $user = User::find()->where(['id' => $id])->one();
+            if (!$user)
+            {
+                throw new NotFoundHttpException('Пользователь не найден');
+            }
             $tweetsQuery = Tweets::getFeedQuery($id);
             $isSubscribed = Subscription::isSubscribed($id);
         }
@@ -173,6 +183,12 @@ class UserController extends Controller
         ]);
     }
 
+    /**
+     * Subscribe to User
+     *
+     * @throws NotFoundHttpException
+     */
+
     public function actionSubscribe()
     {
         $get = Yii::$app->request->get();
@@ -183,14 +199,19 @@ class UserController extends Controller
             {
                 $this->redirect(Url::to(['user/profile', 'id' => $id]));
             }
-            //TODO научиться выдавать ошибку
             else
             {
-                $this->redirect(Url::to(['user/profile', 'id' => $id]));
+                throw new NotFoundHttpException('Пользователь не найден');
             }
         }
     }
 
+
+    /**
+     * Unsubscribe User
+     *
+     * @throws NotFoundHttpException
+     */
     public function actionUnsubscribe()
     {
         $get = Yii::$app->request->get();
@@ -201,10 +222,9 @@ class UserController extends Controller
             {
                 $this->redirect(Url::to(['user/profile', 'id' => $id]));
             }
-            //TODO научиться выдавать ошибку
             else
             {
-                $this->redirect(Url::to(['user/profile', 'id' => $id]));
+                throw new NotFoundHttpException('Пользователь не найден');
             }
         }
     }

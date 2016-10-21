@@ -127,9 +127,13 @@ class Subscription extends \yii\db\ActiveRecord
      */
     public static function unsubscribe($id)
     {
-        if (Subscription::find()->where(['user_id' => Yii::$app->user->id])->andWhere(['subscription' => $id])->one()->delete())
+        if ($user = Subscription::find()->where(['user_id' => Yii::$app->user->id])->andWhere(['subscription' => $id])->one())
         {
-            return true;
+            if ($user->delete())
+            {
+                return true;
+            }
+            return null;
         }
         else return null;
     }

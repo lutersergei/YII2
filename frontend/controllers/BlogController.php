@@ -5,12 +5,9 @@ use common\models\PictureUpload;
 use frontend\models\PublishForm;
 use Yii;
 use yii\web\Controller;
-use yii\filters\VerbFilter;
-use yii\filters\AccessControl;
 use common\models\Tweets;
-use frontend\models\SignupForm;
-use common\models\LoginForm;
 use yii\web\UploadedFile;
+use yii\web\NotFoundHttpException;
 
 /**
  * Blog controller
@@ -88,16 +85,24 @@ class BlogController extends Controller
     /**
      * Displays one tweet.
      *
-     * @return mixed
+     * @return string
+     * @throws NotFoundHttpException
      */
     public function actionView()
     {
         $id = Yii::$app->request->get('id');
 
         $tweet = Tweets::find()->where(['id' => $id])->one();
-        return $this->render('view', [
-            'tweet' => $tweet
-        ]);
+        if ($tweet)
+        {
+            return $this->render('view', [
+                'tweet' => $tweet
+            ]);
+        }
+        else
+        {
+            throw new NotFoundHttpException('Запись не нейдена');
+        }
     }
 
     public function actionAbout()

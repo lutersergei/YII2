@@ -57,7 +57,7 @@ BlogAsset::register($this);
                 else:
                 ?>
                     <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="<?= Url::to(['#']) ?>">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="">
                             <?= Html::encode(Yii::$app->user->identity->lastname) . ' ' . Html::encode(Yii::$app->user->identity->firstname)?>
                             <b class="caret"></b>
                             <div class="ripple-container"></div>
