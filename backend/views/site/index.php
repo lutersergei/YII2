@@ -170,6 +170,10 @@ $this->title = 'My Yii Application';
                     <span class="fa fa-th-list"></span> Твиты
                 </a>
 
+                <a href="<?= Url::to(['page/index']) ?>" type="button" class="btn btn-primary btn-lg">
+                    <span class="fa fa-th-list"></span> Страницы
+                </a>
+
 <!--                <button type="button" class="btn btn-success btn-lg">-->
 <!--                    <span class="fa fa-heart"></span> Icon button-->
 <!--                </button>-->
