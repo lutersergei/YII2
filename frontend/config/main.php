@@ -38,17 +38,24 @@ return [
         'errorHandler' => [
             'errorAction' => 'blog/error',
         ],
-
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
                 'view/<id:\d+>' => 'blog/view',
                 'profile/<id:\d+>' => 'user/profile',
-                '<action:\w+>' => 'user/<action>',
                 'about' => 'blog/about',
                 'contact' => 'blog/contact',
+                'page/<slug:[\w\-]+>' => 'page/default/index',
+                '<action:\w+>' => 'user/<action>',
+
             ],
+        ],
+
+    ],
+    'modules' => [
+        'page' => [
+            'class' => 'app\modules\page\PageModule',
         ],
     ],
     'params' => $params,
