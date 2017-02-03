@@ -9,7 +9,8 @@ use yii\bootstrap\ActiveForm;
 use yii\helpers\Url;
 use common\models\Tweets;
 ?>
-<div class="row">
+<div class="row grid">
+    <div class="grid-sizer"></div>
     <?php
     if (!Yii::$app->user->isGuest) {
         ?>
