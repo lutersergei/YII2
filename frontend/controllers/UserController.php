@@ -144,17 +144,16 @@ class UserController extends Controller
     /**
      * View User profile
      *
+     * @param null $id
      * @return string
      * @throws NotFoundHttpException
      */
-    public function actionProfile()
+    public function actionProfile($id = null)
     {
         $this->layout = 'profile.php';
-        $get = Yii::$app->request->get();
         $isSubscribed = false;
-        if (isset($get['id']))
+        if ($id)
         {
-            $id = (int)$get['id'];
             $user = User::find()->where(['id' => $id])->one();
             if (!$user)
             {
@@ -186,15 +185,14 @@ class UserController extends Controller
     /**
      * Subscribe to User
      *
+     * @param null $id
      * @throws NotFoundHttpException
      */
 
-    public function actionSubscribe()
+    public function actionSubscribe($id = null)
     {
-        $get = Yii::$app->request->get();
-        if (isset($get['id']))
+        if ($id)
         {
-            $id = (int)$get['id'];
             if (Subscription::newSubscribe($id))
             {
                 $this->redirect(Url::to(['user/profile', 'id' => $id]));
@@ -210,14 +208,13 @@ class UserController extends Controller
     /**
      * Unsubscribe User
      *
+     * @param null $id
      * @throws NotFoundHttpException
      */
-    public function actionUnsubscribe()
+    public function actionUnsubscribe($id = null)
     {
-        $get = Yii::$app->request->get();
-        if (isset($get['id']))
+        if ($id)
         {
-            $id = (int)$get['id'];
             if (Subscription::unsubscribe($id))
             {
                 $this->redirect(Url::to(['user/profile', 'id' => $id]));
