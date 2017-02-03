@@ -3,51 +3,30 @@ namespace common\models;
 
 use yii\web\UploadedFile;
 use yii\base\Model;
+use yii\imagine\Image;
 
 class PictureUpload extends Model
 {
-
-    public static $image_dir;
-
-    public static function getImageDir()
-    {
-        if (self::$image_dir === null){
-            self::$image_dir = \Yii::getAlias('@upload');
-        }
-        return self::$image_dir;
-    }
-
     /**
      * @param $picture UploadedFile
-     * @return null|string
+     * @return null|string name
      */
-
-    public static function uploadImage($picture)
+    public static function saveImage($picture)
     {
-        $pictureFilename = self::getImageDir() . '/' . $picture->name;
+        $front= \Yii::getAlias('@webroot');
+
+        $pictureFilename = $front . \Yii::$app->params['image_dir'] . $picture->name;
+
+        $thumbFilename = $front . \Yii::$app->params['thumbnail_dir'] . $picture->name;
 
         if ($picture->saveAs($pictureFilename))
         {
+            Image::thumbnail($pictureFilename, 400, null)->save($thumbFilename, ['quality' => 80]);
             return $picture->name;
         }
         else
         {
             return null;
         }
-    }
-
-    /**
-     * @param $picture string filename
-     * @return array|null mime type and content of picture
-     */
-    public static function readImage($picture)
-    {
-        if (file_exists(self::getImageDir() . '/' . $picture))
-        {
-            $fileInfo[] = file_get_contents(self::getImageDir() . '/' . $picture);
-            $fileInfo[] = mime_content_type(self::getImageDir() . '/' . $picture);
-            return $fileInfo;
-        }
-        return null;
     }
 }

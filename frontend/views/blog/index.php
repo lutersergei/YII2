@@ -69,8 +69,8 @@ use common\models\Tweets;
             $text_html = '';
             if ($tweet_content->mode !== Tweets::MODE_NOTHING) {
                 if (($tweet_content->mode === Tweets::MODE_BOTH) || ($tweet_content->mode === Tweets::MODE_IMAGE)) {
-                    if ($tweet->getImage()) {
-                        $image_src = $tweet->getImage();
+                    if ($tweet->image) {
+                        $image_src = $tweet->getThumbPath();
                     } else $image_src = '/img/technology/no_photo.jpg';
                     $image_html = <<<HTML
 <img src="{$image_src}" class="img-responsive"/>

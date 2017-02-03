@@ -8,6 +8,7 @@ use yii\web\Controller;
 use common\models\Tweets;
 use yii\web\UploadedFile;
 use yii\web\NotFoundHttpException;
+use dosamigos\transliterator\TransliteratorHelper;
 
 /**
  * Blog controller
@@ -53,7 +54,7 @@ class BlogController extends Controller
     }
 
     /**
-     * Displays all tweets.
+     * Display all tweets.
      *
      * @return mixed
      */
@@ -65,12 +66,13 @@ class BlogController extends Controller
         $post = Yii::$app->request->post('PublishForm');
         if (count($post)){
             $picture = UploadedFile::getInstance($publishForm, 'image');
-            $image = null;
 
-            if ($picture) {
-                $image = PictureUpload::uploadImage($picture);
+            if($picture){
+                $picture->name = TransliteratorHelper::process($picture->name);
+                $imageName = PictureUpload::saveImage($picture);
             }
-            $publishForm->image = $image;
+            else $imageName = null;
+            $publishForm->image = $imageName;
             $publishForm->text = $post['text'];
             if ($publishForm->createTweet()){
                 $this->refresh();
@@ -83,7 +85,7 @@ class BlogController extends Controller
     }
 
     /**
-     * Displays one tweet.
+     * Display one tweet.
      *
      * @return string
      * @throws NotFoundHttpException

@@ -77,7 +77,6 @@ class Tweets extends \yii\db\ActiveRecord
         $result = new \stdClass();
         $result->mode = self::MODE_NOTHING;
         if ($this->image){
-            $result->image = $this->image;
             $result->mode = self::MODE_IMAGE;
         }
         if ($this->text){
@@ -88,23 +87,6 @@ class Tweets extends \yii\db\ActiveRecord
             $result->mode = self::MODE_BOTH;
         }
         return $result;
-    }
-
-    /**
-     * @return null|string base64 string
-     */
-    public function getImage()
-    {
-        $imageInfo = PictureUpload::readImage($this->image);
-        if ($imageInfo){
-            $position = strpos($imageInfo[1], 'image');
-            if ($position !== false)
-            {
-                return 'data:' . $imageInfo[1] . ';base64,' . base64_encode($imageInfo[0]);
-            }
-            return null;
-        }
-        return null;
     }
 
     /**
@@ -137,5 +119,21 @@ class Tweets extends \yii\db\ActiveRecord
         $query = self::find()->leftJoin(User::tableName(), self::tableName() . '.user_id =' . User::tableName() . '.id')->where(['user_id' => $subscription])->orderBy(['create_at' => SORT_DESC])->with('user');
 
         return $query;
+    }
+
+    /**
+     * @return string Full path to image
+     */
+    public  function getImagePath()
+    {
+        return Yii::$app->params['image_dir'] . $this->image;
+    }
+
+    /**
+     * @return string Full path to image
+     */
+    public  function getThumbPath()
+    {
+        return Yii::$app->params['thumbnail_dir'] . $this->image;
     }
 }
