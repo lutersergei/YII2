@@ -1,7 +1,7 @@
 <?php
 
 /* @var $this yii\web\View */
-/* @var $tweets \common\models\Tweets[]  */
+/* @var $tweets \common\models\Tweets[] */
 /* @var $publishForm \frontend\models\PublishForm*/
 $this->title = 'ТвиттоГрамм';
 use yii\helpers\Html;
@@ -57,6 +57,8 @@ use common\models\Tweets;
         </a>
         <?php
     }?>
+    <div class="grid">
+        <div class="grid-sizer"></div>
     <?php
     foreach ($tweets as $tweet)
     {
@@ -101,4 +103,5 @@ HTML;
         }
     }
     ?>
+    </div>
 </div>

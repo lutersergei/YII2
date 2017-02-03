@@ -59,48 +59,51 @@ use common\models\Tweets;
         </a>
         <?php
     }?>
-    <?php
-    foreach ($tweets as $tweet)
-    {
-        $tweet_content = $tweet->getContent();
-        $image_html = '';
-        $text_html = '';
-        if ($tweet_content->mode !== Tweets::MODE_NOTHING) {
-            if (($tweet_content->mode === Tweets::MODE_BOTH) || ($tweet_content->mode === Tweets::MODE_IMAGE)) {
-                if ($tweet->getImage()) {
-                    $image_src = $tweet->getImage();
-                } else $image_src = '/img/technology/no_photo.jpg';
-                $image_html = <<<HTML
+    <div class="grid">
+        <div class="grid-sizer"></div>
+        <?php
+        foreach ($tweets as $tweet)
+        {
+            $tweet_content = $tweet->getContent();
+            $image_html = '';
+            $text_html = '';
+            if ($tweet_content->mode !== Tweets::MODE_NOTHING) {
+                if (($tweet_content->mode === Tweets::MODE_BOTH) || ($tweet_content->mode === Tweets::MODE_IMAGE)) {
+                    if ($tweet->getImage()) {
+                        $image_src = $tweet->getImage();
+                    } else $image_src = '/img/technology/no_photo.jpg';
+                    $image_html = <<<HTML
 <img src="{$image_src}" class="img-responsive"/>
 HTML;
-            }
-            if (($tweet_content->mode === Tweets::MODE_BOTH) || ($tweet_content->mode === Tweets::MODE_TEXT)) {
-                $text_encode = Html::encode($tweet_content->text);
-                $text_html = <<<HTML
+                }
+                if (($tweet_content->mode === Tweets::MODE_BOTH) || ($tweet_content->mode === Tweets::MODE_TEXT)) {
+                    $text_encode = Html::encode($tweet_content->text);
+                    $text_html = <<<HTML
 <p>{$text_encode}</p>
 HTML;
-            }
+                }
 
-            ?>
-            <div class="col-sm-6">
-                <section class="blog-post">
-                    <div class="panel panel-default">
-                        <?= $image_html ?>
-                        <div class="panel-body">
-                            <div class="blog-post-meta">
-                                <strong><a class="text-info" href="<?= Url::to(['user/profile','id' => $tweet->user->id]) ?>"><?= Html::encode($tweet->user->lastname) . ' ' . Html::encode($tweet->user->firstname) ?></a></strong>
-                                <p class="pull-right"> <?= $tweet->create_at ?></p>
-                            </div>
-                            <div class="blog-post-content">
-                                <?= $text_html ?>
-                                <a class="btn btn-info" href="<?= Url::to(['blog/view', 'id' => $tweet->id])?>">Читать...</a>
+                ?>
+                <div class="col-sm-6">
+                    <section class="blog-post">
+                        <div class="panel panel-default">
+                            <?= $image_html ?>
+                            <div class="panel-body">
+                                <div class="blog-post-meta">
+                                    <strong><a class="text-info" href="<?= Url::to(['user/profile','id' => $tweet->user->id]) ?>"><?= Html::encode($tweet->user->lastname) . ' ' . Html::encode($tweet->user->firstname) ?></a></strong>
+                                    <p class="pull-right"> <?= $tweet->create_at ?></p>
+                                </div>
+                                <div class="blog-post-content">
+                                    <?= $text_html ?>
+                                    <a class="btn btn-info" href="<?= Url::to(['blog/view', 'id' => $tweet->id])?>">Читать...</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </section>
-            </div>
-            <?php
+                    </section>
+                </div>
+                <?php
+            }
         }
-    }
-    ?>
+        ?>
+    </div>
 </div>

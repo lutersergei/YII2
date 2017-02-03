@@ -4,6 +4,7 @@
 /* @var $countTweets string*/
 /* @var $friends User[]*/
 /* @var $isSubscribed bool*/
+/* @var $tweets \common\models\Tweets[] */
 
 $this->title = 'Профиль пользователя';
 use yii\helpers\Html;
@@ -87,7 +88,8 @@ use yii\helpers\Url;
 
                     <div class="tab-pane fade in active" id="tab-newsfeed">
                         <div id="newsfeed">
-                            <div class="row">
+                            <div class="row grid">
+                                <div class="grid-sizer"></div>
                                 <?php
                                 foreach ($tweets as $tweet)
                                 {

@@ -22,6 +22,7 @@ class BlogAsset extends AssetBundle
         'https://fonts.googleapis.com/icon?family=Material+Icons'
     ];
     public $js = [
+        'js/masonry.pkgd.min.js',
         'js/ripples.min.js',
         'js/material.min.js',
         'js/material-scrolltop.js',
